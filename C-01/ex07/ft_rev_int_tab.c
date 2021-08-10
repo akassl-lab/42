@@ -1,45 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/10 16:14:03 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/10 16:14:14 by nmallett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
 void	ft_rev_int_tab(int *tab, int size);
 void 	ft_rev_int_tab2(int *tab, int size);
-void 	ft_rev_int_tab3(int *tab, int size);
 
 
 int	main(void)
 {
-	int *aka;
-	aka[0] = 1;
-	aka[1] = 2;
-	aka[2] = 3;
+	int aka[] = {1, 2, 3};
 	
-	ft_rev_int_tab3(aka, 3);
-	
-	printf("table 1 - Value: %d\n", aka[0]);
-	printf("table 2 - Value: %d\n", aka[1]);
-	printf("table 3 - Value: %d\n", aka[2]);
-	
+	ft_rev_int_tab2(aka, 3);
 	return (0);
 }
-
-
-void ft_rev_int_tab3(int *tab, int size)
-{
-	int		temp;
-	int		i;
-	size--;
-
-	while( i <= size)
-	{
-		temp = tab[i];
-		tab[i] = tab[size];
-		tab[size] = temp;
-		i++;
-		size--;
-	}
-
-	printf("Table 1 Value: %d\n", tab[0]);
-}
-
 
 void	ft_rev_int_tab2(int *tab, int size)
 {
@@ -49,41 +32,27 @@ void	ft_rev_int_tab2(int *tab, int size)
 
 	while( i < (size))
 	{
-		temp = tab[i]; 
-		int iTable = size - i;
+		//printf("DEBUG CURRENT FETCH ARRAY: %d\n\n", i);
 
+		//printf("DEBUG CURRENT TAB VALUE: %d - TABLE: %dn\n",  tab[i], i);
 		
-		printf("\nOriginal Table and Value: %d, %d", i, tab[i]);
-		printf("\nLAST TABLE AND VALUE: %d, %d\n\n\n\n", iTable - 1, tab[iTable - 1]);
-		//printf("Whats my temp value? %d\n\n", temp);
+		temp = tab[i];
+
+	//	printf("FETCHING TAB: %d - Current Value: %d\n\n", i, tab[i]);
 	
 
-	//	printf("\n\n|||Value of table %d - Value: %d\n\n", i, temp);
+		printf("Value we stored: %d\n\n", temp);
 
-
-		int tempAgainLast;
-		int tempAgainFirst;
-		tempAgainLast = tab[iTable - 1];
-		tempAgainFirst = tab[i];
-
-		tab[iTable - 1] = tempAgainFirst;
-		tab[i] = tempAgainLast;
-
-	//	tab[i] = tab[iTable - 1];
-	//	tab[iTable] = temp;
-
+	
 
 		
 		//tab[i] = tab[size];
 		//tab[size] = temp;
-		//aka--;
-		//i++;
-
-		printf("\nTable %d: New Value: %d\n", i, tab[i]);
-	
 		aka--;
 		i++;
 
+		printf("Table %d: %d\n", i, tab[i]);
+	
 	}
 }
 
