@@ -1,0 +1,13 @@
+Credentials cache: API:29112A99-64A6-4820-9288-7C8E4582FA8E
+        Principal: nmallett@42QUEBEC.COM
+    Cache version: 0
+
+Server: krbtgt/42QUEBEC.COM@42QUEBEC.COM
+Client: nmallett@42QUEBEC.COM
+Ticket etype: aes256-cts-hmac-sha1-96, kvno 1
+Ticket length: 326
+Auth time:  Aug  4 16:26:07 2021
+End time:   Aug  5 02:26:07 2021
+Ticket flags: enc-pa-rep, pre-authent, initial, proxiable, forwardable
+Addresses: addressless
+
