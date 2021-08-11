@@ -1,19 +1,25 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/11 17:14:21 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/11 17:21:05 by nmallett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void ft_print_alphabet(void);
+#include <unistd.h>
 
-int main()
+void	ft_print_alphabet(void)
 {
-    ft_print_alphabet();
-    return (0);
-}
+	char	c;
 
-
-void ft_print_alphabet(void)
-{
-    char c = 0;
-    for( c = 97; c < 123; c++ )
-    {
-        printf("%c", c);
-    }
+	c = 97;
+	while (c < 123)
+	{
+		write(1, &c, 1);
+		c++;
+	}	
 }

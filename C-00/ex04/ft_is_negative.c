@@ -1,22 +1,29 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_negative.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/11 17:26:36 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/11 17:29:08 by nmallett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void ft_is_negative(int n);
+#include <unistd.h>
 
-int main()
+void	ft_is_negative(int n)
 {
-    ft_is_negative(-1);
-    return (0);
-}
+	char	array[2];
 
-void ft_is_negative(int n)
-{
-    char array[2] = {'N', 'P'};
-    if ( n < 0 )
-    {
-        printf("%c", array[0]);
-    }
-    else if ( n > 0 )
-    {
-        printf("%c", array[1]);
-    }
+	array[0] = "N";
+	array[1] = "P";
+	if (n < 0)
+	{
+		write(1, &array[0], 1);
+	}
+	else if (n > 0)
+	{
+		write(1, &array[1], 1);
+	}
 }

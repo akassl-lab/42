@@ -1,18 +1,35 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/11 17:26:13 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/11 17:26:15 by nmallett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void ft_print_numbers(void);
+#include <unistd.h>
 
-int main()
+void	ft_print(int a);
+
+void	ft_print(int a)
 {
-    ft_print_numbers();
-    return (0);
+	char	*chiffre;
+
+	chiffre[] = "0123456789";
+	write(1, chiffre + a, 1);
 }
 
-void ft_print_numbers(void)
+void	ft_print_numbers(void)
 {
-    int i = 0;
-    for ( i = 0; i < 10; i++)
-    {
-        printf("%d", i);
-    }
+	int		i;
+
+	i = 0;
+	while (i < 10)
+	{
+		ft_print(i);
+		i++;
+	}
 }
