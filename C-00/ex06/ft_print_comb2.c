@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:36:28 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/11 17:36:30 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/11 18:26:02 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,4 @@ void	ft_print_comb2(void)
 		}
 		a[0]++;
 	}
-	ft_putchar('\n');
 }

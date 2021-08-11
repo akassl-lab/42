@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:26:13 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/11 17:26:15 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/11 18:10:04 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_print(int a)
 {
 	char	*chiffre;
 
-	chiffre[] = "0123456789";
+	chiffre = "0123456789";
 	write(1, chiffre + a, 1);
 }
 
