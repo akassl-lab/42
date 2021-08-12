@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 16:14:03 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/10 16:14:14 by nmallett         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdio.h>
 
 void	ft_rev_int_tab(int *tab, int size);
@@ -34,7 +22,7 @@ void	ft_rev_int_tab2(int *tab, int size)
 	{
 		//printf("DEBUG CURRENT FETCH ARRAY: %d\n\n", i);
 
-		//printf("DEBUG CURRENT TAB VALUE: %d - TABLE: %dn\n",  tab[i], i);
+		//printf("DEBUG CURRENT TAB VALUE: %d - TABLE: %d\n\n",  tab[i], i);
 		
 		temp = tab[i];
 

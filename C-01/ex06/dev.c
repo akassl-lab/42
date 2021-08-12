@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_div_mod.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 11:09:34 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/12 11:09:36 by nmallett         ###   ########.fr       */
+/*   Created: 2021/08/09 12:50:46 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/09 12:52:06 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_div_mod(int a, int b, int *div, int *mod)
+void	ft_strlen(char *str)
 {
-	*div = a / b;
-	*mod = a % b;
+	while (*str && *str != '\0')
+		++str;
 }

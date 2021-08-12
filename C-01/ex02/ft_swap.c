@@ -1,20 +1,14 @@
-#include <stdio.h>
-
-void	ft_swap(int *a, int *b);
-
-int	main(void)
-{
-	int 	aka_a;
-	int		aka_b;
-	int		*a;
-	int		*b;
-
-	a = &aka_a;
-	b = &aka_b;
-	
-	ft_swap(a, b);
-	return (0);
-}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/12 11:09:24 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/12 11:09:26 by nmallett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 void	ft_swap(int *a, int *b)
 {
