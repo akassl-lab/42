@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 16:51:53 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/12 21:10:10 by nmallett         ###   ########.fr       */
+/*   Created: 2021/08/12 19:30:14 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/12 21:08:44 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_numeric(char *str)
+char	*ft_strcapitalize(char *str)
 {
-	int		count;
+	int		i;
 
-	count = 1;
-	while (*str)
-	{		
-		if (*str < 48 || *str > 57)
-			count = 0;
-		if (*str == '\0')
-			count = 1;
-		str++;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+		{
+			str[i] += 32;
+		}
+		if ((str[i - 1] > 31 && str[i - 1] < 48) || (str[i - 1] == '\0'))
+		{
+			if (str[i] >= 'a' && str[i] <= 'z')
+				str[i] -= 32;
+		}
+		i++;
 	}
-	return (count);
+	return (str);
 }

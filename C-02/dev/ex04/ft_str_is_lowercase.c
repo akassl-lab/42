@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 16:51:53 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/12 21:10:10 by nmallett         ###   ########.fr       */
+/*   Created: 2021/08/12 17:18:35 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/12 17:25:31 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int	ft_str_is_numeric(char *str)
+int	ft_str_is_lowercase(char *str)
 {
-	int		count;
+	int		result;
 
-	count = 1;
+	result = 1;
 	while (*str)
-	{		
-		if (*str < 48 || *str > 57)
-			count = 0;
+	{
+		if (*str < 97 || *str > 122)
+			result = 0;
 		if (*str == '\0')
-			count = 1;
+			result = 1;
 		str++;
-	}
-	return (count);
+	}	
+	return (result);
 }

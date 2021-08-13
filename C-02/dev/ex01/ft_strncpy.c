@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 16:51:53 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/12 21:10:10 by nmallett         ###   ########.fr       */
+/*   Created: 2021/08/12 16:37:12 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/12 21:09:47 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_numeric(char *str)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int		count;
+	int		i;
 
-	count = 1;
-	while (*str)
-	{		
-		if (*str < 48 || *str > 57)
-			count = 0;
-		if (*str == '\0')
-			count = 1;
-		str++;
+	i = 0;
+	while(i < n) 
+	{
+		dest[i] = src[i];
+		i++;
 	}
-	return (count);
+	return (dest);
 }
