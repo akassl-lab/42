@@ -30,7 +30,8 @@ char	*ft_strcpy(char *dest, char *src)
 		dest[i] = src[i];
 		i++;
 	}
-	return (dest);
+	dest[i] = src[i];
+	return (src);
 }
 
 void    ft_putstr(char *str)
