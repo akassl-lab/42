@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/17 15:56:58 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/17 16:24:09 by nmallett         ###   ########.fr       */
+/*   Created: 2021/08/17 17:09:48 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/17 17:10:27 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
-{
-	int		i[2];
+#include <unistd.h>
 
-	i[0] = 0;
-	i[1] = n;
-	while (s1[i[0]] || s2[i[0]])
+void	ft_putstr(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if (i[0] > i[1])
-			return (s1[0] - s1[1]);
-		if (s1[i[0]] > s2[i[0]])
-			return ();
-		if (s1[i[0]] < s2[i[0]])
-			return (s1[0] - s1[1]);
-		i[0]++;
+		write(1, &str[i], 1);
+		i++;
 	}
-	return (0);
 }
