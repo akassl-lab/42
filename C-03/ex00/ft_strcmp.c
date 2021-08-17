@@ -6,10 +6,9 @@
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 15:37:55 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/17 15:56:09 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/17 16:24:48 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 int	ft_strcmp(char *s1, char *s2)
 {
 	int		i;
@@ -18,9 +17,9 @@ int	ft_strcmp(char *s1, char *s2)
 	while (s1[i] || s2[i])
 	{
 		if (s1[i] < s2[i])
-			return (-1);
+			return (s1[i] - s2[i]);
 		if (s1[i] > s2[i])
-			return (1);
+			return (s1[i] - s2[i]);
 		i++;
 	}
 	return (0);
