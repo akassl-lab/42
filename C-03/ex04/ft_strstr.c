@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 16:37:12 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/17 11:53:57 by nmallett         ###   ########.fr       */
+/*   Created: 2021/08/17 16:04:21 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/17 16:06:21 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+char	*ft_strstr(char *str, char *to_find)
 {
-	unsigned int		i;
+	int		i[3];
 
-	i = 0;
-	while (i < n && src[i] != '\0')
+	i[0] = 0;
+	i[1] = 0;
+	i[2] = 0;
+	while (to_find[i[1]] != '\0')
+		i[1]++;
+	while (str[i[0]] != '\0')
 	{
-		dest[i] = src[i];
-		i++;
+		if (to_find[i[0]] == str[i[0]])
+		{
+			i[2]++;
+			if (i[1] - 1 == i[2])
+				return (str);
+		}
+		else
+			return (str - i[0]);
+		i[0]++;
 	}
-
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	return (str);
 }

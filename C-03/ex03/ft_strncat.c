@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 16:37:12 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/17 11:53:57 by nmallett         ###   ########.fr       */
+/*   Created: 2021/08/17 16:03:27 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/17 16:04:01 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	unsigned int		i;
+	int		i[2];
+	int		nb2;
 
-	i = 0;
-	while (i < n && src[i] != '\0')
+	i[0] = 0;
+	i[1] = 0;
+	nb2 = nb - 1;
+	while (dest[i[0]] != '\0')
 	{
-		dest[i] = src[i];
-		i++;
+		i[0]++;
 	}
-
-	while (i < n)
+	while (src[i[1]] != '\0' && i[1] <= nb2)
 	{
-		dest[i] = '\0';
-		i++;
+		dest[i[0] + i[1]] = src[i[1]];
+		i[1]++;
 	}
+	dest[i[0] + i[1]] = '\0';
 	return (dest);
 }

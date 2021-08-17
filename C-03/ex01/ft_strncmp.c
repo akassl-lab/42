@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 16:37:12 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/17 11:53:57 by nmallett         ###   ########.fr       */
+/*   Created: 2021/08/17 15:56:58 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/17 15:59:58 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	unsigned int		i;
+	int		i[2];
 
-	i = 0;
-	while (i < n && src[i] != '\0')
+	i[0] = 0;
+	i[1] = n;
+	while (s1[i[0]] || s2[i[0]])
 	{
-		dest[i] = src[i];
-		i++;
+		if (i[0] > i[1])
+			return (0);
+		if (s1[i[0]] > s2[i[0]])
+			return (1);
+		if (s1[i[0]] < s2[i[0]])
+			return (-1);
+		i[0]++;
 	}
-
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	return (0);
 }
