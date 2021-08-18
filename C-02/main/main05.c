@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int	ft_str_is_uppercase(char *str);
+
+int	main(void)
+{
+	char	*str;
+	char	*str2;
+	char	*str3;
+	int		result;
+
+	str = "1234567890";
+	str2 = "ABAS";
+	str3 = "absc";
+	result = ft_str_is_uppercase(str);
+	printf("%d\n", result);
+	result = ft_str_is_uppercase(str2);
+	printf("%d\n", result);
+	result = ft_str_is_uppercase(str3);
+	printf("%d\n", result);
+}
