@@ -6,25 +6,20 @@
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 15:56:58 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/17 16:24:09 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/19 12:31:33 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int		i[2];
+	unsigned int		i;
 
-	i[0] = 0;
-	i[1] = n;
-	while (s1[i[0]] || s2[i[0]])
+	i = 0;
+	while ((s1[i] || s2[i]) && (i < n))
 	{
-		if (i[0] > i[1])
-			return (s1[0] - s1[1]);
-		if (s1[i[0]] > s2[i[0]])
-			return ();
-		if (s1[i[0]] < s2[i[0]])
-			return (s1[0] - s1[1]);
-		i[0]++;
+		if (s1[i] < s2[i] || s1[i] > s2[i])
+			return (s1[i] - s2[i]);
+		i++;
 	}
 	return (0);
 }

@@ -5,19 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/17 16:03:27 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/17 16:04:01 by nmallett         ###   ########.fr       */
+/*   Created: 2021/08/19 11:55:33 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/19 12:05:52 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int		i[2];
-	int		nb2;
+	unsigned int		i[2];
+	unsigned int		nb2;
 
 	i[0] = 0;
 	i[1] = 0;
-	nb2 = nb - 1;
 	while (dest[i[0]] != '\0')
 	{
 		i[0]++;
