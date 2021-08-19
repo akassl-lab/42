@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 16:37:12 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/17 11:53:57 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/19 13:16:35 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		dest[i] = src[i];
 		i++;
 	}
-
 	while (i < n)
 	{
 		dest[i] = '\0';
