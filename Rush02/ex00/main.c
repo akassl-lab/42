@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     }
     else
     {
-        char *buff = (char*) malloc(MAX_BUFFER_SIZE);
+        char *buff = (char*) malloc (MAX_BUFFER_SIZE);
         int file = open("utils/numbers.dict", O_RDONLY);
 
         if (file == -1)
@@ -54,7 +54,17 @@ int main(int argc, char **argv)
         {           
             if(ft_atoi(argv[1]) == ft_atoi(&buff[i]))
             {
-                printf("matched"); // We found the argument in the file
+                int i2 = i;
+                while(buff[i2++] != '\n')
+                {
+                    if (buff[i2] != ':' && buff[i2] != ' ' && buff[i2] >= 97 && buff[i2] <= 122)
+                        write(1, &buff[i2], 1);
+                    
+                }
+
+
+
+                //printf("matched"); // We found the argument in the file
                 break;
 
             }
