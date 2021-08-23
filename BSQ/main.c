@@ -6,11 +6,8 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 12:20:03 by nmallett          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2021/08/23 16:21:03 by bdion            ###   ########.fr       */
-=======
 /*   Updated: 2021/08/23 16:09:23 by nmallett         ###   ########.fr       */
->>>>>>> c216411741e40b7c1650ddbad59ac344b441db23
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,30 +104,8 @@ int    aka_readFile(char *buffer, char *file)
         aka_terminateProcess(buffer, 1);
         return (0);
     }
-<<<<<<< HEAD
-    int fileOutput = read(fileEx, buffer, 4000);
-    printf("SUCCESS: Opening file %s\n", file);
-    return (fileOutput);
-}
-
-=======
+    
     int fileOutput = read(fileEx, buffer, FILE_SIZE);
     printf("%sSUCCESS:%s Opening file %s\n", COLOR_GREEN, COLOR_RESET, file);
     return (fileOutput);
 }
-
-int aka_canCreateSquare(int fileContent, char *buffer)
-{
-    if (fileContent > 1)
-    {
-		int		i;
-
-		i = 0;
-
-		while (i <= fileContent)
-		{
-			write(1, &buffer[i], 1);
-			i++;
-		}
->>>>>>> c216411741e40b7c1650ddbad59ac344b441db23
-
