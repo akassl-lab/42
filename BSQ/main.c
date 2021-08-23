@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 12:20:03 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/23 15:23:11 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/23 15:45:51 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 
 #include <sys/wait.h>
 
+#include <unistd.h>
+
 #include "includes/libs.c"
 
 void    aka_terminateProcess(char *buffer, unsigned int flag);
 int     aka_readFile(char *buffer, char *file);
-int     aka_canCreateSquare(int fileContent);
+int     aka_canCreateSquare(int fileContent, char *buffer);
 
 #ifdef DEV_MODE
     #define MAX_BUFFER_SIZE     3096
@@ -52,7 +54,7 @@ int main(int argsc, char **argv)
 
         int fileContent = aka_readFile(buffer, FILE_TO_OPEN);
 
-        if (aka_canCreateSquare(fileContent) == 1)
+        if (aka_canCreateSquare(fileContent, buffer) == 1)
             printf("%sERROR:%s We were able to create a square using the file %s", COLOR_RED, COLOR_RESET, FILE_TO_OPEN);
         else
             printf("%sERROR:%s We were unable to create a square using the file %s", COLOR_RED, COLOR_RESET, FILE_TO_OPEN);
@@ -99,10 +101,21 @@ int    aka_readFile(char *buffer, char *file)
     return (fileOutput);
 }
 
-int aka_canCreateSquare(int fileContent)
+int aka_canCreateSquare(int fileContent, char *buffer)
 {
     if (fileContent > 1)
     {
+		int		i;
+
+		i = 0;
+
+		while (i >= fileContent)
+		{
+			printf("0\n");
+			write(1, &buffer[i], 1);
+			i++;
+		}
+
         return (1);
     }
     return (0);
