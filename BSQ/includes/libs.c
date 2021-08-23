@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 11:46:16 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/23 14:37:13 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/23 16:08:14 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #define DEV_MODE true
 
 #define COLOR_RED       "\033[0;31m"
-#define COLOR_GREEN     "\u001b[32m"
-#define COLOR_YELLOW    "\u001b[33m"
-#define COLOR_WHITE     "\u001b[37m"
+#define COLOR_GREEN     "\033[32m"
+#define COLOR_YELLOW    "\033[33m"
+#define COLOR_WHITE     "\033[37m"
 #define COLOR_RESET     "\033[0m"
 
 extern  void	ft_putchar(char c);

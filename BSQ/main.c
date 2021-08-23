@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 12:20:03 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/23 16:01:08 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/23 16:09:23 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int     aka_canCreateSquare(int fileContent, char *buffer);
 int main(int argsc, char **argv)
 {
     if (argsc < 2) {
-        ft_putstr("ERROR: Vous devez utiliser au minimum un argument"); return (0);
+        ft_putstr(COLOR_RED "ERROR: " COLOR_RESET "Vous devez utiliser au minimum un argument"); return (0);
     }
     else if(argsc > 2) {
-        ft_putstr("ERROR: Vous devez utiliser maximum un arguement"); return (0);
+        ft_putstr(COLOR_RED "ERROR: " COLOR_RESET "Vous devez utiliser maximum un arguement"); return (0);
     }
     else
         #define FILE_TO_OPEN argv[1]
@@ -58,12 +58,12 @@ int main(int argsc, char **argv)
 
         if (aka_canCreateSquare(fileContent, buffer) == 1)
         {
-            printf("%sERROR:%s We were able to create a square using the file %s", COLOR_RED, COLOR_RESET, FILE_TO_OPEN);
-            exit(0);
+            printf("%sSUCCESS:%s We were able to create a square using the file %s", COLOR_GREEN, COLOR_RESET, FILE_TO_OPEN);
         }
         else
         {
             printf("%sERROR:%s We were unable to create a square using the file %s", COLOR_RED, COLOR_RESET, FILE_TO_OPEN);
+            aka_terminateProcess(buffer, 1);
         }
 
         free(buffer);
@@ -103,7 +103,7 @@ int    aka_readFile(char *buffer, char *file)
         return (0);
     }
     int fileOutput = read(fileEx, buffer, FILE_SIZE);
-    printf("SUCCESS: Opening file %s\n", file);
+    printf("%sSUCCESS:%s Opening file %s\n", COLOR_GREEN, COLOR_RESET, file);
     return (fileOutput);
 }
 
