@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 12:20:03 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/23 14:38:55 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/23 15:23:11 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 
 #include "includes/libs.c"
 
-void    terminateProcess(char *buffer, unsigned int flag);
-int     readFile(char *buffer, char *file);
+void    aka_terminateProcess(char *buffer, unsigned int flag);
+int     aka_readFile(char *buffer, char *file);
+int     aka_canCreateSquare(int fileContent);
 
 #ifdef DEV_MODE
     #define MAX_BUFFER_SIZE     3096
-    #define TERMINATE_WAIT      5
+    #define TERMINATE_WAIT      1
 #else
     #define MAX_BUFFER_SIZE     1024
     #define TERMINATE_WAIT      5
@@ -49,7 +50,15 @@ int main(int argsc, char **argv)
         // Let's create the buffer using the buffer size we defined and allocate an address
         char *buffer = (char*) malloc (MAX_BUFFER_SIZE);
 
-        int fileContent = readFile(buffer, FILE_TO_OPEN);
+        int fileContent = aka_readFile(buffer, FILE_TO_OPEN);
+
+        if (aka_canCreateSquare(fileContent) == 1)
+            printf("%sERROR:%s We were able to create a square using the file %s", COLOR_RED, COLOR_RESET, FILE_TO_OPEN);
+        else
+            printf("%sERROR:%s We were unable to create a square using the file %s", COLOR_RED, COLOR_RESET, FILE_TO_OPEN);
+
+
+        free(buffer);
 
 
     #else
@@ -61,7 +70,7 @@ int main(int argsc, char **argv)
 }
 
 // Flag 0 = Using the buffer or flag 1 = Ignore the buffer
-void    terminateProcess(char *buffer, unsigned int flag)
+void    aka_terminateProcess(char *buffer, unsigned int flag)
 {
     if(*buffer || flag == 1)
     {
@@ -74,7 +83,7 @@ void    terminateProcess(char *buffer, unsigned int flag)
         printf("%sERROR:%s Could not terminate process, the buffer was invalid", COLOR_RED, COLOR_RESET);
 }
 
-int    readFile(char *buffer, char *file)
+int    aka_readFile(char *buffer, char *file)
 {
     int fileEx = open(file, O_RDONLY);
 
@@ -82,10 +91,19 @@ int    readFile(char *buffer, char *file)
         // Put flag to 1 to ignore buffer since we did not use it yet so we need to be able to pass our condition even if the buffer is free
         // But we still need to free the allocated address that we requested
         printf("%sERROR:%s This file does not exist\n", COLOR_RED, COLOR_RESET);
-        terminateProcess(buffer, 1);
+        aka_terminateProcess(buffer, 1);
         return (0);
     }
     int fileOutput = read(fileEx, buffer, sizeof(file));
     printf("SUCCESS: Opening file %s\n", file);
     return (fileOutput);
+}
+
+int aka_canCreateSquare(int fileContent)
+{
+    if (fileContent > 1)
+    {
+        return (1);
+    }
+    return (0);
 }
