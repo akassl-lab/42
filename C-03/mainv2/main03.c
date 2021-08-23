@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int    ft_strncat(char *dest, char *src, unsigned int nb);
+char    *ft_strncat(char *dest, char *src, unsigned int nb);
 
 int    main(void)
 {
