@@ -6,13 +6,19 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 11:46:16 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/23 12:18:17 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/23 14:37:13 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
 #define DEV_MODE true
+
+#define COLOR_RED       "\033[0;31m"
+#define COLOR_GREEN     "\u001b[32m"
+#define COLOR_YELLOW    "\u001b[33m"
+#define COLOR_WHITE     "\u001b[37m"
+#define COLOR_RESET     "\033[0m"
 
 extern  void	ft_putchar(char c);
 extern  void	ft_putnbr(int nb);
@@ -107,7 +113,7 @@ char	*ft_strcpy(char *dest, char *src)
 	return (src);
 }
 
-int	ft_strcmp(char *s1, char *s2)
+int	    ft_strcmp(char *s1, char *s2)
 {
 	int		i;
 
@@ -123,7 +129,7 @@ int	ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	    ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned int		i;
 
@@ -176,7 +182,7 @@ char	*ft_strstr(char *str, char *to_find)
 	return (0);
 }
 
-int ft_iterative_factorial(int nb)
+int     ft_iterative_factorial(int nb)
 {
 	if (nb < 0)
 		return 0;
@@ -193,7 +199,7 @@ int ft_iterative_factorial(int nb)
 	return (i[1]);
 }
 
-int ft_iterative_power(int nb, int power)
+int     ft_iterative_power(int nb, int power)
 {
 	int 	i;
 	int 	result;
@@ -212,7 +218,7 @@ int ft_iterative_power(int nb, int power)
 	return result;
 }
 
-int ft_fibonacci(int index)
+int     ft_fibonacci(int index)
 {
 	if (index < 0)
 		return (-1);
@@ -221,7 +227,7 @@ int ft_fibonacci(int index)
 	return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
 }
 
-int ft_sqrt(int nb)
+int     ft_sqrt(int nb)
 {
 	int result;
 
@@ -230,7 +236,7 @@ int ft_sqrt(int nb)
 	return result;
 }
 
-int ft_is_str_numeric(char *str)
+int     ft_is_str_numeric(char *str)
 {
     int     i;
 
@@ -241,7 +247,7 @@ int ft_is_str_numeric(char *str)
     return (1);
 }
 
-int ft_atoi(char *str)
+int     ft_atoi(char *str)
 {
     int i[2];
 
@@ -263,7 +269,7 @@ int ft_atoi(char *str)
     return (i[1] * i[0]);
 }
 
-int ft_splitnumber(int a, int b)
+int     ft_splitnumber(int a, int b)
 {
     while(a--)
         b/=10;
