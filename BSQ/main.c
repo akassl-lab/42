@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 12:20:03 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/23 15:45:51 by bdion            ###   ########.fr       */
+/*   Updated: 2021/08/23 16:21:03 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@
 #include <unistd.h>
 
 #include "includes/libs.c"
+#include "includes/checkSquare.c"
 
 void    aka_terminateProcess(char *buffer, unsigned int flag);
 int     aka_readFile(char *buffer, char *file);
-int     aka_canCreateSquare(int fileContent, char *buffer);
+//int     aka_canCreateSquare(int fileContent, char *buffer);
 
 #ifdef DEV_MODE
     #define MAX_BUFFER_SIZE     3096
@@ -96,27 +97,9 @@ int    aka_readFile(char *buffer, char *file)
         aka_terminateProcess(buffer, 1);
         return (0);
     }
-    int fileOutput = read(fileEx, buffer, sizeof(file));
+    int fileOutput = read(fileEx, buffer, 4000);
     printf("SUCCESS: Opening file %s\n", file);
     return (fileOutput);
 }
 
-int aka_canCreateSquare(int fileContent, char *buffer)
-{
-    if (fileContent > 1)
-    {
-		int		i;
 
-		i = 0;
-
-		while (i >= fileContent)
-		{
-			printf("0\n");
-			write(1, &buffer[i], 1);
-			i++;
-		}
-
-        return (1);
-    }
-    return (0);
-}
