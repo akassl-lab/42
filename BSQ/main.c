@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 12:20:03 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/23 15:51:29 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/23 16:01:08 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ int     aka_canCreateSquare(int fileContent, char *buffer);
 #ifdef DEV_MODE
     #define MAX_BUFFER_SIZE     3096
     #define TERMINATE_WAIT      1
+    #define FILE_SIZE           300
 #else
     #define MAX_BUFFER_SIZE     1024
     #define TERMINATE_WAIT      5
+    #define FILE_SIZE           252
 #endif
 
 
@@ -100,7 +102,7 @@ int    aka_readFile(char *buffer, char *file)
         aka_terminateProcess(buffer, 1);
         return (0);
     }
-    int fileOutput = read(fileEx, buffer, sizeof(file));
+    int fileOutput = read(fileEx, buffer, FILE_SIZE);
     printf("SUCCESS: Opening file %s\n", file);
     return (fileOutput);
 }
@@ -113,9 +115,8 @@ int aka_canCreateSquare(int fileContent, char *buffer)
 
 		i = 0;
 
-		while (i >= fileContent)
+		while (i <= fileContent)
 		{
-			printf("0\n");
 			write(1, &buffer[i], 1);
 			i++;
 		}
