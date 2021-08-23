@@ -6,7 +6,11 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 12:20:03 by nmallett          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/08/23 16:21:03 by bdion            ###   ########.fr       */
+=======
+/*   Updated: 2021/08/23 16:09:23 by nmallett         ###   ########.fr       */
+>>>>>>> c216411741e40b7c1650ddbad59ac344b441db23
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +33,21 @@ int     aka_readFile(char *buffer, char *file);
 #ifdef DEV_MODE
     #define MAX_BUFFER_SIZE     3096
     #define TERMINATE_WAIT      1
+    #define FILE_SIZE           300
 #else
     #define MAX_BUFFER_SIZE     1024
     #define TERMINATE_WAIT      5
+    #define FILE_SIZE           252
 #endif
 
 
 int main(int argsc, char **argv)
 {
     if (argsc < 2) {
-        ft_putstr("ERROR: Vous devez utiliser au minimum un argument"); return (0);
+        ft_putstr(COLOR_RED "ERROR: " COLOR_RESET "Vous devez utiliser au minimum un argument"); return (0);
     }
     else if(argsc > 2) {
-        ft_putstr("ERROR: Vous devez utiliser maximum un arguement"); return (0);
+        ft_putstr(COLOR_RED "ERROR: " COLOR_RESET "Vous devez utiliser maximum un arguement"); return (0);
     }
     else
         #define FILE_TO_OPEN argv[1]
@@ -56,10 +62,14 @@ int main(int argsc, char **argv)
         int fileContent = aka_readFile(buffer, FILE_TO_OPEN);
 
         if (aka_canCreateSquare(fileContent, buffer) == 1)
-            printf("%sERROR:%s We were able to create a square using the file %s", COLOR_RED, COLOR_RESET, FILE_TO_OPEN);
+        {
+            printf("%sSUCCESS:%s We were able to create a square using the file %s", COLOR_GREEN, COLOR_RESET, FILE_TO_OPEN);
+        }
         else
+        {
             printf("%sERROR:%s We were unable to create a square using the file %s", COLOR_RED, COLOR_RESET, FILE_TO_OPEN);
-
+            aka_terminateProcess(buffer, 1);
+        }
 
         free(buffer);
 
@@ -97,9 +107,30 @@ int    aka_readFile(char *buffer, char *file)
         aka_terminateProcess(buffer, 1);
         return (0);
     }
+<<<<<<< HEAD
     int fileOutput = read(fileEx, buffer, 4000);
     printf("SUCCESS: Opening file %s\n", file);
     return (fileOutput);
 }
 
+=======
+    int fileOutput = read(fileEx, buffer, FILE_SIZE);
+    printf("%sSUCCESS:%s Opening file %s\n", COLOR_GREEN, COLOR_RESET, file);
+    return (fileOutput);
+}
+
+int aka_canCreateSquare(int fileContent, char *buffer)
+{
+    if (fileContent > 1)
+    {
+		int		i;
+
+		i = 0;
+
+		while (i <= fileContent)
+		{
+			write(1, &buffer[i], 1);
+			i++;
+		}
+>>>>>>> c216411741e40b7c1650ddbad59ac344b441db23
 
