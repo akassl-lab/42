@@ -6,11 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 12:20:03 by nmallett          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/08/23 15:37:35 by nmallett         ###   ########.fr       */
-=======
-/*   Updated: 2021/08/23 15:45:51 by bdion            ###   ########.fr       */
->>>>>>> 759ec21cfb9541cfab71e01d748bda8852b0191a
+/*   Updated: 2021/08/23 15:51:29 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +54,8 @@ int main(int argsc, char **argv)
 
         int fileContent = aka_readFile(buffer, FILE_TO_OPEN);
 
-<<<<<<< HEAD
-        if (aka_canCreateSquare(fileContent) == 1) {
-=======
         if (aka_canCreateSquare(fileContent, buffer) == 1)
->>>>>>> 759ec21cfb9541cfab71e01d748bda8852b0191a
+        {
             printf("%sERROR:%s We were able to create a square using the file %s", COLOR_RED, COLOR_RESET, FILE_TO_OPEN);
             exit(0);
         }
