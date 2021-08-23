@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 12:20:03 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/23 15:23:11 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/23 15:37:35 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,14 @@ int main(int argsc, char **argv)
 
         int fileContent = aka_readFile(buffer, FILE_TO_OPEN);
 
-        if (aka_canCreateSquare(fileContent) == 1)
+        if (aka_canCreateSquare(fileContent) == 1) {
             printf("%sERROR:%s We were able to create a square using the file %s", COLOR_RED, COLOR_RESET, FILE_TO_OPEN);
+            exit(0);
+        }
         else
+        {
             printf("%sERROR:%s We were unable to create a square using the file %s", COLOR_RED, COLOR_RESET, FILE_TO_OPEN);
-
+        }
 
         free(buffer);
 
