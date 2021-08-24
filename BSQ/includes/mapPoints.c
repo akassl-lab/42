@@ -5,7 +5,6 @@ int	mapPoints(char yx[10][25], char *buffer)
 	int		i;
 	int		x;
 	int		y;
-	int		points;
 	int		bestpoint;
 	int		n;
 	int	error;
@@ -20,7 +19,6 @@ int	mapPoints(char yx[10][25], char *buffer)
 		x = 0;
 		while (x < 27)
 		{
-			points = 0;
 			n = 1;
 			j = 0;
 			i = 0;
