@@ -6,41 +6,49 @@ int	mapPoints(char yx[10][25], char *buffer)
 	int		x;
 	int		y;
 	int		points;
+	int		bestpoint;
+	int		n;
+	int	error;
+	int	j;
 
 	i = 0;
 	y = 0;
+	bestpoint = 0;
 	x = 0;
-
-
+	while (y < 9)
+	{
 		x = 0;
-		while (y < 9)
+		while (x < 27)
 		{
 			points = 0;
-			while (yx[y][x] != buffer[2] && yx[y][x + i] != buffer[2] && yx[y + i][x] != buffer[2] && yx[y + i][x + i] != buffer[2])
+			n = 1;
+			j = 0;
+			i = 0;
+			error = 0;
+			while (error == 0)
 			{
-				i++;
-				points++;
+				j = 0;
+				while (j < n && error == 0)
+				{
+					i = 0;
+					while (error == 0 && i < n)
+					{
+						if (yx[y + j][x + i] != buffer[1])
+							error = 1;
+						i++;
+					}
+					j++;
+				}
+				n++;
 			}
-			printf("yx[%d][%d] as %d points\n", y, x, points);
-			y++;
+			if (n > bestpoint)
+			{
+				bestpoint = n;
+				printf("the left corner is at yx[%d][%d] and as %d * %d char\n", y, x, bestpoint - 2, bestpoint - 2);
+			}
+			x++;
 		}
-
-       int countLineLength = 0;
-        int countTotalLines = 0;
-
-
-		while (i2 <= fileContent)
-		{
-            // Calculate the total lines in the file
-            if(buffer2[i2] == '\n')
-                countTotalLines++;
-
-            // Calculate the total characters in one line
-            if (buffer2[i+12] == '\n' && countTotalLines == 0)
-                countLineLength = i2+1;
-
-			write(1, &buffer2[i2], 1);
-			i2++;
-		}
+		y++;
+	}
 	return (1);
 }
