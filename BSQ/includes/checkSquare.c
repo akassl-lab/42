@@ -1,5 +1,5 @@
 #include <unistd.h>
-
+#include "mapPoints.c"
 extern int	aka_canCreateSquare(int fileContent, char *buffer);
 
 int aka_canCreateSquare(int fileContent, char *buffer)
@@ -59,6 +59,7 @@ int aka_canCreateSquare(int fileContent, char *buffer)
 			write(1, "\n", 1);
 			y++;
 		}
+		mapPoints(yx, buffer);
         return (1);
     }
     return (0);
