@@ -34,7 +34,7 @@ int aka_canCreateSquare(int fileContent, char *buffer)
 			if (buffer[i] == buffer[1])
 			{
 				yx[y][x] = buffer[1];
-				x++;	
+				x++;
 			}
 			if (buffer[i] == buffer[2])
 			{
@@ -63,6 +63,4 @@ int aka_canCreateSquare(int fileContent, char *buffer)
     }
     return (0);
 }
-
-
 
