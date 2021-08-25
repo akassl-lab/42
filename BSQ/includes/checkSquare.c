@@ -4,21 +4,22 @@ extern int	aka_canCreateSquare(int fileContent, char *buffer);
 
 int		checkElement(char *buffer, char *element)
 {
-	int	i;
+	int	i[2];
 	int	j;
 
-	i = 0;
+	i[0] = 0;
+    i[1] = 0;
 	j = 0;
-	while (buffer[i] != '\n')
+	while (buffer[i[0]] != '\n')
 	{
-		if (buffer[i] >= '0' && buffer[i] <= '9')
-			i = i;
+		if (buffer[i[0]] >= '0' && buffer[i[0]] <= '9')
+            i[1] = i[0];
 		else
 		{
-			element[j] = buffer[i];
+			element[j] = buffer[i[0]];
 			j++;
 		}
-		i++;
+		i[0]++;
 	}
 	return (1);
 }
