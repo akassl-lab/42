@@ -2,7 +2,7 @@
 
 #include "lastChange.c"
 
-int	mapPoints(char yx[33][33], char *buffer)
+int	mapPoints(char yx[globalY][globalX], char *buffer)
 {
 	int		i;
 	int		x;
@@ -15,10 +15,10 @@ int	mapPoints(char yx[33][33], char *buffer)
 
 	y = 0;
 	bestpoint = 0;
-	while (y < 9)
+	while (y < globalY)
 	{
 		x = 0;
-		while (x < 27)
+		while (x < globalX)
 		{
 			n = 1;
 			j = 0;

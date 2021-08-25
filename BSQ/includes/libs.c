@@ -12,6 +12,9 @@
 
 #include <unistd.h>
 
+int 	globalX; /* Length */
+int		globalY;  /* Height */
+
 #define DEV_MODE true
 
 #define COLOR_RED       "\033[0;31m"
@@ -19,6 +22,14 @@
 #define COLOR_YELLOW    "\033[33m"
 #define COLOR_WHITE     "\033[37m"
 #define COLOR_RESET     "\033[0m"
+
+#ifdef DEV_MODE
+    #define TERMINATE_WAIT      1
+#else
+    #define TERMINATE_WAIT      5
+#endif
+
+
 
 extern  void	ft_putchar(char c);
 extern  void	ft_putnbr(int nb);
@@ -39,6 +50,113 @@ extern  int     ft_sqrt(int nb);
 extern  int     ft_is_str_numeric(char *str);
 extern  int     ft_atoi(char *str);
 extern  int     ft_splitnumber(int a, int b);
+extern  int     calculateFileSize(char *buffer, char *file);
+extern	void    aka_terminateProcess(char *buffer, unsigned int flag);
+extern	int    	aka_readFile(char *buffer, char *file);
+extern	int		calculateTotalLines(char *buffer, int fileContent);
+extern	int		calculateTotalLength(char *buffer, int fileContent);
+
+// Flag 0 = Using the buffer or flag 1 = Ignore the buffer
+void    aka_terminateProcess(char *buffer, unsigned int flag)
+{
+    if(*buffer || flag == 1)
+    {
+        free(buffer); // Free the allocated address
+        #undef FILE_TO_OPEN // Undef our FILE_TO_OPEN
+        printf("%sTerminating process in %d second(s)%s", COLOR_RED, TERMINATE_WAIT, COLOR_RESET); // Give it a small delai to let the buffer free completely
+        exit(TERMINATE_WAIT); // Terminate the process
+    }
+    else
+        printf("%sERROR:%s Could not terminate process, the buffer was invalid", COLOR_RED, COLOR_RESET);
+}
+
+int    aka_readFile(char *buffer, char *file)
+{
+    int fileSize = calculateFileSize(buffer, file);
+
+    if (fileSize == -1)
+    {
+        printf("File size is unknown, terminating process....");
+        aka_terminateProcess(buffer, 1);
+        return (0);
+    }
+
+    int fileEx = open(file, O_RDONLY);
+    int fileOutput = read(fileEx, buffer, fileSize);
+    printf("%sSUCCESS:%s Opening file %s\n", COLOR_GREEN, COLOR_RESET, file);
+    return (fileOutput);
+}
+
+int    calculateFileSize(char *buffer, char *file)
+{
+    int fileEx = open(file, O_RDONLY);
+
+    if (fileEx == -1) {
+        printf("%sERROR:%s This file does not exist\n", COLOR_RED, COLOR_RESET);
+        aka_terminateProcess(buffer, 1);
+        return (0);
+    }
+
+    int     i[3];
+
+
+    i[0] = 0;
+    i[1] = 1;
+    i[2] = 0;
+
+   
+
+    while ((i[0] = read(fileEx, buffer, i[1])))
+    {
+        i[2] += i[0];
+        i[1]++;
+    }
+
+    return ((i[2] + (i[2] % i[1])) + (sizeof(char) * i[1]));
+}
+
+extern	int		calculateTotalLines(char *buffer, int fileContent)
+{
+	int		i[2];
+
+	i[0] = 0;
+	i[1] = 0;
+
+	while (i[0] <= fileContent)
+	{
+		if (buffer[i[0]] == '\n')
+			i[1]++;
+		i[0]++;
+	}
+	return (i[1]);
+}
+
+extern	int		calculateTotalLength(char *buffer, int fileContent)
+{
+	int		i[3];
+
+	i[0] = 0;
+	i[1] = 0;
+	i[2] = 0;
+
+	while (i[0] <= fileContent)
+	{
+		if (buffer[i[0]] != '\n' && i[2] < 3)
+			i[1]++;
+		if (buffer[i[0]] == '\n')
+		{
+			i[2]++;
+			if (i[2] != 2)
+				i[1] = 0;
+		}
+
+		if (i[2] == 2)
+			return (i[1]);
+
+		i[0]++;
+	}
+	return (i[1]);
+}
 
 void	ft_putchar(char c)
 {

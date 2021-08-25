@@ -4,7 +4,7 @@ extern int	aka_canCreateSquare(int fileContent, char *buffer);
 
 int aka_canCreateSquare(int fileContent, char *buffer)
 {
-	char		yx[33][33];
+	char		yx[globalY][globalX];
 	int		i;
 	int		x;
 	int		y;
@@ -14,10 +14,10 @@ int aka_canCreateSquare(int fileContent, char *buffer)
 		i = 0;
 		y = 0;
 		x = 0;
-		while (y < 9)
+		while (y < globalY)
 		{
 			x = 0;
-			while (x < 27)
+			while (x < globalX)
 				yx[y][x++] = ' ';
 			y++;
 		}
@@ -51,10 +51,10 @@ int aka_canCreateSquare(int fileContent, char *buffer)
 		i = 0;
 		y = 0;
 		x = 0;
-		while (y < 9)
+		while (y < globalY)
 		{
 			x = 0;
-			while (x < 27)
+			while (x < globalX)
 				write(1, &yx[y][x++], 1);
 			write(1, "\n", 1);
 			y++;
@@ -63,10 +63,10 @@ int aka_canCreateSquare(int fileContent, char *buffer)
 		i = 0;
 		y = 0;
 		x = 0;
-		while (y < 9)
+		while (y < globalY)
 		{
 			x = 0;
-			while (x < 27)
+			while (x < globalX)
 				write(1, &yx[y][x++], 1);
 			write(1, "\n", 1);
 			y++;

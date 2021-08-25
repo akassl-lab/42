@@ -1,4 +1,4 @@
-int	lastChange(char yx[33][33], int y, int x, int w)
+int	lastChange(char yx[globalY][globalX], int y, int x, int w)
 {
 	int i;
 	int j;
