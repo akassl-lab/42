@@ -2,13 +2,36 @@
 #include "mapPoints.c"
 extern int	aka_canCreateSquare(int fileContent, char *buffer);
 
+int		checkElement(char *buffer, char *element)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (buffer[i] != '\n')
+	{
+		if (buffer[i] >= '0' && buffer[i] <= '9')
+			i = i;
+		else
+		{
+			element[j] = buffer[i];
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 int aka_canCreateSquare(int fileContent, char *buffer)
 {
 	char		yx[globalY][globalX];
+	char	element[3];
 	int		i;
 	int		x;
 	int		y;
 
+	checkElement(buffer, element);
 	if (fileContent > 1)
     {
 		i = 0;
@@ -21,29 +44,31 @@ int aka_canCreateSquare(int fileContent, char *buffer)
 				yx[y][x++] = ' ';
 			y++;
 		}
-		i = 5;
+		i = 0;
+		while(buffer[i] != '\n')
+			i++;
 		y = 0;
 		x = 0;
 		while (i <= fileContent)
 		{
-			if (buffer[i] == buffer[4])
+			if (buffer[i] == '\n')
 			{
 				y++;
 				x = 0;
 			}
-			if (buffer[i] == buffer[1])
+			if (buffer[i] == element[0])
 			{
-				yx[y][x] = buffer[1];
+				yx[y][x] = element[0];
 				x++;
 			}
-			if (buffer[i] == buffer[2])
+			if (buffer[i] == element[1])
 			{
-				yx[y][x] = buffer[2];
+				yx[y][x] = element[1];
 				x++;
 			}
-			if (buffer[i] == buffer[3])
+			if (buffer[i] == element[2])
 			{
-				yx[y][x] = buffer[3];
+				yx[y][x] = element[2];
 				x++;
 			}
 			i++;
@@ -51,15 +76,7 @@ int aka_canCreateSquare(int fileContent, char *buffer)
 		i = 0;
 		y = 0;
 		x = 0;
-		while (y < globalY)
-		{
-			x = 0;
-			while (x < globalX)
-				write(1, &yx[y][x++], 1);
-			write(1, "\n", 1);
-			y++;
-		}
-		mapPoints(yx, buffer);
+		mapPoints(yx, element);
 		i = 0;
 		y = 0;
 		x = 0;
@@ -75,4 +92,3 @@ int aka_canCreateSquare(int fileContent, char *buffer)
     }
     return (0);
 }
-

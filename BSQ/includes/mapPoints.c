@@ -2,7 +2,7 @@
 
 #include "lastChange.c"
 
-int	mapPoints(char yx[globalY][globalX], char *buffer)
+int	mapPoints(char yx[globalY][globalX], char *element)
 {
 	int		i;
 	int		x;
@@ -32,7 +32,7 @@ int	mapPoints(char yx[globalY][globalX], char *buffer)
 					i = 0;
 					while (error == 0 && i < n)
 					{
-						if (yx[y + j][x + i] != buffer[1])
+						if (yx[y + j][x + i] != element[0] || y + j + 1 > globalY || x + i + 1 > globalX)
 							error = 1;
 						i++;
 					}
@@ -52,6 +52,6 @@ int	mapPoints(char yx[globalY][globalX], char *buffer)
 		y++;
 	}
 	printf("the left corner is at yx[%d][%d] and as %d * %d char\n", position[0], position[1], position[2], position[2]);
-	lastChange(yx, position[0], position[1], position[2]);
+	lastChange(yx, position[0], position[1], position[2], element);
 	return (1);
 }
