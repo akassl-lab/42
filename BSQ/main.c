@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 12:20:03 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/25 18:28:17 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/25 19:17:12 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "includes/libs.h"
-#include "includes/checkSquare.h"
+#include "includes/check_square.h"
 
 void	initiateMain(int argsc, char **argv, int totalArguFounds);
 
@@ -36,8 +36,8 @@ void	initiateMain(int argsc, char **argv, int totalArguFounds)
 	argsc = argsc - 1;
 	while (totalArguFounds <= argsc)
 	{
-		buffer = malloc (sizeof (char* ));
-		fileContent = aka_readFile(buffer, argv[totalArguFounds+1]);
+		buffer = malloc (sizeof(char *));
+		fileContent = aka_readFile(buffer, argv[totalArguFounds + 1]);
 		if (fileContent != -1)
 		{
 			g_globalX = calculateTotalLength(buffer, fileContent);
