@@ -1,5 +1,9 @@
+#ifndef CHECKSQUARE_H
+# define CHECKSQUARE_H "checkSquare.h"
+
+
 #include <unistd.h>
-#include "mapPoints.h"
+#include "mapPoints.c"
 extern int	aka_canCreateSquare(int fileContent, char *buffer);
 
 int		checkElement(char *buffer, char *element)
@@ -26,7 +30,7 @@ int		checkElement(char *buffer, char *element)
 
 int aka_canCreateSquare(int fileContent, char *buffer)
 {
-	char		yx[globalY][globalX];
+	char		yx[g_globalY][g_globalX];
 	char	element[3];
 	int		i;
 	int		x;
@@ -38,10 +42,10 @@ int aka_canCreateSquare(int fileContent, char *buffer)
 		i = 0;
 		y = 0;
 		x = 0;
-		while (y < globalY)
+		while (y < g_globalY)
 		{
 			x = 0;
-			while (x < globalX)
+			while (x < g_globalX)
 				yx[y][x++] = ' ';
 			y++;
 		}
@@ -81,10 +85,10 @@ int aka_canCreateSquare(int fileContent, char *buffer)
 		i = 0;
 		y = 0;
 		x = 0;
-		while (y < globalY)
+		while (y < g_globalY)
 		{
 			x = 0;
-			while (x < globalX)
+			while (x < g_globalX)
 				write(1, &yx[y][x++], 1);
 			write(1, "\n", 1);
 			y++;
@@ -93,3 +97,4 @@ int aka_canCreateSquare(int fileContent, char *buffer)
     }
     return (0);
 }
+#endif
