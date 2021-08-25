@@ -4,7 +4,7 @@ extern int	aka_canCreateSquare(int fileContent, char *buffer);
 
 int aka_canCreateSquare(int fileContent, char *buffer)
 {
-	char	yx[10][25];
+	char		yx[33][33];
 	int		i;
 	int		x;
 	int		y;
@@ -54,12 +54,23 @@ int aka_canCreateSquare(int fileContent, char *buffer)
 		while (y < 9)
 		{
 			x = 0;
-			while (x < 9*3)
+			while (x < 27)
 				write(1, &yx[y][x++], 1);
 			write(1, "\n", 1);
 			y++;
 		}
 		mapPoints(yx, buffer);
+		i = 0;
+		y = 0;
+		x = 0;
+		while (y < 9)
+		{
+			x = 0;
+			while (x < 27)
+				write(1, &yx[y][x++], 1);
+			write(1, "\n", 1);
+			y++;
+		}
         return (1);
     }
     return (0);

@@ -30,9 +30,9 @@ int     aka_readFile(char *buffer, char *file);
 int aka_canCreateSquare2(int fileContent, char *buffer);
 
 #ifdef DEV_MODE
-    #define MAX_BUFFER_SIZE     3096
+    #define MAX_BUFFER_SIZE     509600
     #define TERMINATE_WAIT      1
-    #define FILE_SIZE           300
+    #define FILE_SIZE           6000
 #else
     #define MAX_BUFFER_SIZE     1024
     #define TERMINATE_WAIT      5

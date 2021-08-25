@@ -1,19 +1,20 @@
 #include <stdio.h>
 
-int	mapPoints(char yx[10][25], char *buffer)
+#include "lastChange.c"
+
+int	mapPoints(char yx[33][33], char *buffer)
 {
 	int		i;
 	int		x;
 	int		y;
 	int		bestpoint;
 	int		n;
-	int	error;
-	int	j;
+	int		error;
+	int		j;
+	int		position[3];
 
-	i = 0;
 	y = 0;
 	bestpoint = 0;
-	x = 0;
 	while (y < 9)
 	{
 		x = 0;
@@ -42,11 +43,15 @@ int	mapPoints(char yx[10][25], char *buffer)
 			if (n > bestpoint)
 			{
 				bestpoint = n;
-				printf("the left corner is at yx[%d][%d] and as %d * %d char\n", y, x, bestpoint - 2, bestpoint - 2);
+				position[0] = y;
+				position[1] = x;
+				position[2] = bestpoint - 2;
 			}
 			x++;
 		}
 		y++;
 	}
+	printf("the left corner is at yx[%d][%d] and as %d * %d char\n", position[0], position[1], position[2], position[2]);
+	lastChange(yx, position[0], position[1], position[2]);
 	return (1);
 }
