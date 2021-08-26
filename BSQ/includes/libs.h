@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 20:23:46 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/25 21:00:58 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/25 21:19:01 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	aka_readFile(char *buffer, char *file)
 
 	fileSize = calculateFileSize(buffer, file);
 	fileEx = open(file, O_RDONLY);
-    if (fileEx == -1)
+	if (fileEx == -1)
 	{
 		map("Error: The file is non-existance or empty\n");
 		return (-1);
@@ -56,10 +56,8 @@ int	calculateFileSize(char *buffer, char *file)
 	int		i[3];
 
 	fileEx = open(file, O_RDONLY);
-
-    if (fileEx == -1)
-        return(-1);
-
+	if (fileEx == -1)
+		return (-1);
 	i[0] = 0;
 	i[1] = 1;
 	i[2] = 0;

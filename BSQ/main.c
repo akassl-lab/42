@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 12:20:03 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/25 21:05:41 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/25 21:17:13 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ int	main(int argsc, char **argv)
 		{
 			g_globalX = calculateTotalLength(b, f);
 			g_globalY = calculateTotalLines(b, f);
-            aka_canCreateSquare(f, b, g_globalY, g_globalX);
+			aka_canCreateSquare(f, b, g_globalY, g_globalX);
 		}
-        else
-        {
-            aka_terminateProcess(b, 1);
-            return(0);
-        }
-        free(b);
+		else
+		{
+			aka_terminateProcess(b, 1);
+			return (0);
+		}
+		free(b);
 	}
 	else
 		initiateMain(argsc, argv, 0);
@@ -61,13 +61,12 @@ void	initiateMain(int argsc, char **argv, int totalArguFounds)
 		{
 			g_globalX = calculateTotalLength(b, f);
 			g_globalY = calculateTotalLines(b, f);
-            aka_canCreateSquare(f, b, g_globalY, g_globalX);
+			aka_canCreateSquare(f, b, g_globalY, g_globalX);
 		}
-        else
-        {
-            aka_terminateProcess(b, 1);
-        }
-
+		else
+		{
+			aka_terminateProcess(b, 1);
+		}
 		free(b);
 		totalArguFounds++;
 	}
