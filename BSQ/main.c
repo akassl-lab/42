@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 12:20:03 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/25 19:17:12 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/25 20:16:04 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,22 @@ int	main(int argsc, char **argv)
 
 void	initiateMain(int argsc, char **argv, int totalArguFounds)
 {
-	char	*buffer;
-	int		fileContent;
+	char	*b;
+	int		f;
 
 	argsc = argsc - 1;
 	while (totalArguFounds <= argsc)
 	{
-		buffer = malloc (sizeof(char *));
-		fileContent = aka_readFile(buffer, argv[totalArguFounds + 1]);
-		if (fileContent != -1)
+		b = malloc (sizeof(char *));
+		f = aka_readFile(b, argv[totalArguFounds + 1]);
+		if (f != -1)
 		{
-			g_globalX = calculateTotalLength(buffer, fileContent);
-			g_globalY = calculateTotalLines(buffer, fileContent);
-			if (aka_canCreateSquare(fileContent, buffer) != 1)
+			g_globalX = calculateTotalLength(b, f);
+			g_globalY = calculateTotalLines(b, f);
+			if (aka_canCreateSquare(f, b, g_globalY, g_globalX) != 1)
 				printf("error couldnt create square");
 		}
-		free(buffer);
+		free(b);
 		totalArguFounds++;
 	}
 }

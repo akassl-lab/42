@@ -4,7 +4,7 @@
 # include <unistd.h>
 # include "map_points.h"
 
-extern int	aka_canCreateSquare(int fileContent, char *buffer);
+extern int	aka_canCreateSquare(int f, char *b, const int GY, const int GX);
 
 int	checkElement(char *buffer, char *element)
 {
@@ -86,19 +86,19 @@ void	buffToYx(char yx[g_globalY][g_globalX], int fC, char *buffer, char e[3])
 	}
 }
 
-int	aka_canCreateSquare(int fileContent, char *buffer)
+int	aka_canCreateSquare(int f, char *b, const int GY, const int GX)
 {
-	char	yx[g_globalY][g_globalX];
+	char	yx[GY][GX];
 	char	element[3];
 	int		i;
 	int		x;
 	int		y;
 
-	checkElement(buffer, element);
-	if (fileContent < 1)
+	checkElement(b, element);
+	if (f < 1)
 		return (0);
 	overwrite(yx);
-	buffToYx(yx, fileContent, buffer, element);
+	buffToYx(yx, f, b, element);
 	mapPoints(yx, element);
 	printMap(yx);
 	return (1);

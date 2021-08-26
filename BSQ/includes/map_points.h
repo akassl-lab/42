@@ -48,7 +48,7 @@ int	mapPoints(char yx[g_globalY][g_globalX], char *element)
 		}
 		ixz[2]++;
 	}
-	lastChange(yx, position[0], position[1], position[2], element);
+	lastChange(yx, position, element);
 	return (1);
 }
 #endif
