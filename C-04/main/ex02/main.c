@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
+/*   By: bdion <bdion@student.42quebec.co>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/18 13:01:29 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/26 12:03:03 by nmallett         ###   ########.fr       */
+/*   Created: 2021/08/17 17:53:36 by bdion             #+#    #+#             */
+/*   Updated: 2021/08/17 17:54:49 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+void	ft_putnbr(int nb);
 
-int	ft_iterative_factorial(int nb)
+int	main(void)
 {
-	int		i[2];
+	int	a;
 
-	if (nb < 0)
-		return (0);
-	i[0] = 1;
-	i[1] = 1;
-	while (i[0] <= nb)
-	{
-		i[1] *= i[0];
-		i[0]++;
-	}
-	return (i[1]);
+	a = -2147483648;
+	ft_putnbr(a);
 }

@@ -1,28 +1,27 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/26 12:13:02 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/26 12:13:04 by nmallett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_recursive_factorial(int nb);
-int storeValue[3];
-
-int main(void)
+int	ft_recursive_factorial_extra(int nb, int n)
 {
-	storeValue[0] = 1; // Fake Loop we are creating
-	storeValue[1] = 1; // Value that we will be returning
-	storeValue[2] = -1; // The initial value that passed thru the fonctuin
-	printf("Value: %d", ft_recursive_factorial(5));
-	return 0;
+	if (n > 0)
+		return (ft_recursive_factorial_extra(nb * n, n - 1));
+	return (nb);
 }
 
-
-int ft_recursive_factorial(int nb)
+int	ft_recursive_factorial(int nb)
 {
 	if (nb < 0)
 		return (0);
-	if (storeValue[2] == -1 && storeValue[0] == 1)
-		storeValue[2] = nb;
-	if (storeValue[0] <= storeValue[2])
-	{		storeValue[1] *= storeValue[0];
-		storeValue[0]++;
-		return (ft_recursive_factorial(storeValue[2]));
-	}
-	return (storeValue[1]);
+	if (nb == 1 || nb == 0)
+		return (1);
+	return (ft_recursive_factorial_extra(nb, nb - 1));
 }

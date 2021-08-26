@@ -1,29 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/26 12:25:21 by nmallett          #+#    #+#             */
+/*   Updated: 2021/08/26 12:28:45 by nmallett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
-int ft_iterative_power(int nb, int power);
+int	ft_iterative_power(int nb, int power);
 
-
-int main(void)
+int	ft_iterative_power(int nb, int power)
 {
-	printf("Value: %d", ft_iterative_power(0, 0));
-	return 0;
-}
+	int		nb2;
 
-int ft_iterative_power(int nb, int power)
-{
-	int 	i;
-	int 	result;
-
-	i = 1;
-	result = nb;
-	while(i <= power)
-	{
-		printf("a\n");
-		result *= nb;
-		i++;
-	}
-
-	if (result == 0)
+	nb2 = nb;
+	if (nb == 0 || power == 0)
 		return (1);
-	return result;
+	if (nb < 0 || power < 0)
+		return (0);
+	while (--power != 0)
+		nb2 = nb2 * nb;
+	return (nb2);
 }
