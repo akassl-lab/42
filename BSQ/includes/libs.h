@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   libs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
+/*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 20:23:46 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/25 20:23:48 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/25 21:00:58 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBS_H
 # define LIBS_H "libs.h"
+
+# include "ft_libs.h"
 
 int		g_globalX = 0;
 int		g_globalY = 0;
@@ -38,9 +40,12 @@ int	aka_readFile(char *buffer, char *file)
 	int		fileOutput;
 
 	fileSize = calculateFileSize(buffer, file);
-	if (fileSize == -1)
-		return (-1);
 	fileEx = open(file, O_RDONLY);
+    if (fileEx == -1)
+	{
+		map("Error: The file is non-existance or empty\n");
+		return (-1);
+	}
 	fileOutput = read(fileEx, buffer, fileSize);
 	return (fileOutput);
 }
@@ -51,8 +56,10 @@ int	calculateFileSize(char *buffer, char *file)
 	int		i[3];
 
 	fileEx = open(file, O_RDONLY);
-	if (fileEx == -1)
-		return (-1);
+
+    if (fileEx == -1)
+        return(-1);
+
 	i[0] = 0;
 	i[1] = 1;
 	i[2] = 0;

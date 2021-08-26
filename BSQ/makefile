@@ -1,17 +1,16 @@
-NAME = bsq
-PATH_SRC =
-FLAG = -Wall -Wextra -Werror
-OPTION = -c
-SRC = main.c
-OBJ = main.o
+NAME=bsq
+SRCS=main.c
+OBJECTS=main.o
 
 all: $(NAME)
 
 $(NAME):
-	gcc $(FLAG) $(OPTION) $(SRC) -o ${NAME}
+	gcc -c -Wall -Wextra -Werror $(SRCS)
+	gcc  $(OBJECTS) -o $(NAME)
 
 clean:
-	/bin/rm -f $(OBJ)
+	/bin/rm -f $(OBJECTS)
+
 fclean: clean
 	/bin/rm -f $(NAME)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_square.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
+/*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 20:23:17 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/25 20:23:20 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/25 21:07:09 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	printMap(char yx[g_globalY][g_globalX])
 	int	y;
 	int	x;
 
-	y = 0;
+	y = 1;
 	while (y < g_globalY)
 	{
 		x = 0;

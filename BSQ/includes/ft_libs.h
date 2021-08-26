@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_libs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
+/*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 20:23:28 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/25 20:23:30 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/25 20:47:48 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 extern	void	ft_putchar(char c);
 extern	void	ft_putstr(char *str);
+extern	void	map(char *str);
 extern	int	ft_atoi(char *str);
 
 void	ft_putchar(char c)
@@ -32,6 +33,18 @@ void	ft_putstr(char *str)
 	{
 		finalString = *str;
 		write(1, &finalString, 1);
+		str++;
+	}
+}
+
+void	map(char *str)
+{
+	char	finalString;
+
+	while (*str && *str != '\0')
+	{
+		finalString = *str;
+		write(2, &finalString, 1);
 		str++;
 	}
 }
