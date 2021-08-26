@@ -90,9 +90,6 @@ int	aka_canCreateSquare(int f, char *b, const int GY, const int GX)
 {
 	char	yx[GY][GX];
 	char	element[3];
-	int		i;
-	int		x;
-	int		y;
 
 	checkElement(b, element);
 	if (f < 1)
