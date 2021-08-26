@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 16:38:15 by nmallett          #+#    #+#             */
-/*   Updated: 2021/08/23 12:01:42 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/08/26 10:30:04 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,4 @@ int	ft_str_is_alpha(char *str)
 		i++;
 	}
 	return (1);
-
+}
