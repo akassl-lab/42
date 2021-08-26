@@ -28,6 +28,64 @@ int	checkElement(char *buffer, char *element)
 	return (1);
 }
 
+void	printMap(char yx[g_globalY][g_globalX])
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < g_globalY)
+	{
+		x = 0;
+		while (x < g_globalX)
+			write(1, &yx[y][x++], 1);
+		write(1, "\n", 1);
+		y++;
+	}
+}
+
+void	overwrite(char yx[g_globalY][g_globalX])
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < g_globalY)
+	{
+		x = 0;
+		while (x < g_globalX)
+			yx[y][x++] = ' ';
+		y++;
+	}
+}
+
+void	buffToYx(char yx[g_globalY][g_globalX], int fC, char *buffer, char e[3])
+{
+	int	x;
+	int	y;
+	int	i;
+
+	y = 0;
+	i = 0;
+	while (buffer[i] != '\n')
+		i++;
+	while (i <= fC)
+	{
+		if (buffer[i] == '\n')
+		{
+			y++;
+			x = 0;
+		}
+		if (buffer[i] == e[0])
+			yx[y][x++] = e[0];
+		if (buffer[i] == e[1])
+			yx[y][x++] = e[1];
+		if (buffer[i] == e[2])
+			yx[y][x++] = e[2];
+		i++;
+	}
+}
+
 int	aka_canCreateSquare(int fileContent, char *buffer)
 {
 	char	yx[g_globalY][g_globalX];
@@ -37,64 +95,12 @@ int	aka_canCreateSquare(int fileContent, char *buffer)
 	int		y;
 
 	checkElement(buffer, element);
-	if (fileContent > 1)
-	{
-		i = 0;
-		y = 0;
-		x = 0;
-		while (y < g_globalY)
-		{
-			x = 0;
-			while (x < g_globalX)
-				yx[y][x++] = ' ';
-			y++;
-		}
-		i = 0;
-		while (buffer[i] != '\n')
-			i++;
-		y = 0;
-		x = 0;
-		while (i <= fileContent)
-		{
-			if (buffer[i] == '\n')
-			{
-				y++;
-				x = 0;
-			}
-			if (buffer[i] == element[0])
-			{
-				yx[y][x] = element[0];
-				x++;
-			}
-			if (buffer[i] == element[1])
-			{
-				yx[y][x] = element[1];
-				x++;
-			}
-			if (buffer[i] == element[2])
-			{
-				yx[y][x] = element[2];
-				x++;
-			}
-			i++;
-		}
-		i = 0;
-		y = 0;
-		x = 0;
-		mapPoints(yx, element);
-		i = 0;
-		y = 0;
-		x = 0;
-		while (y < g_globalY)
-		{
-			x = 0;
-			while (x < g_globalX)
-				write(1, &yx[y][x++], 1);
-			write(1, "\n", 1);
-			y++;
-		}
-		return (1);
-	}
-	return (0);
+	if (fileContent < 1)
+		return (0);
+	overwrite(yx);
+	buffToYx(yx, fileContent, buffer, element);
+	mapPoints(yx, element);
+	printMap(yx);
+	return (1);
 }
 #endif

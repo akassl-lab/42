@@ -44,8 +44,9 @@ int	calculateFileSize(char *buffer, char *file)
 	i[0] = 0;
 	i[1] = 1;
 	i[2] = 0;
-	while ((i[0] = read(fileEx, buffer, i[1])))
+	while (i[1] < 200000)
 	{
+		i[0] = read(fileEx, buffer, i[1]);
 		i[2] += i[0];
 		i[1]++;
 	}
