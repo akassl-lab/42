@@ -29,6 +29,7 @@ int     ft_strlen(char *str);
 void    *ft_memset(void *str, int c, size_t n);
 void    ft_bzero(void *str, size_t n);
 void    *ft_memcpy(void *dest, const void * src, size_t n);
+void    *ft_memmove(void *str1, const void *str2, size_t n);
 
 
 void    ft_putstr(char *str)
@@ -160,6 +161,25 @@ void    *ft_memcpy(void *dest, const void * src, size_t n)
         i++;
     }
     return (oldStr);
+}
+
+void    *ft_memmove(void *dest, const void *src, size_t n)
+{
+    size_t              i;
+    unsigned    char    *oldStr;
+    unsigned    char    *newStr;
+
+    i = 0;
+    oldStr = (unsigned char *)  src;
+    newStr = (unsigned char *)  dest;
+
+    if (src < dest)
+        while (n--)
+            newStr[n] = oldStr[n];
+    else
+        ft_memcpy(dest, src, n);
+
+    return (newStr);
 }
 
 #endif
