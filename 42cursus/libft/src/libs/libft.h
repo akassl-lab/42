@@ -13,8 +13,8 @@
 #ifndef LIBFT_H
 # define LIBFT_H "libft.h"
 
-#include <stdio.h>
-#include <unistd.h>
+# include <stdio.h>
+# include <unistd.h>
 
 
 void    ft_putstr(char *str);
@@ -33,6 +33,18 @@ void    *ft_memmove(void *str1, const void *str2, size_t n);
 
 size_t  ft_strlcpy(char * dest, const char * src, size_t size);
 size_t  ft_strlcat(char * dest, const char *src, size_t size );
+
+int     ft_atoi(char *str);
+
+char	*ft_toupper(char *str);
+char	*ft_strlowcase(char *str);
+
+int	    ft_strncmp(char *s1, char *s2, unsigned int n);
+
+char    *ft_strchr(const char *str, int n);
+char    *ft_strrchr(const char *str, int n);
+
+void    *ft_memchr(const void *str, int n, size_t n2);
 
 
 void    ft_putstr(char *str)
@@ -228,5 +240,117 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	return (size + stringLength[1]);
 }
 
+int     ft_atoi(char *str)
+{
+    int i[2];
+
+    i[0] = 0;
+    i[1] = 1;
+    
+    if(*str == '-') 
+    {
+        i[1] = -1;
+        str++;
+    }
+    
+    while ((*str >= '0') && (*str <= '9')) 
+    {
+      i[0] = i[0] * 10;
+      i[0] = i[0] + (*str - 48);
+      str++;
+    }
+    return (i[1] * i[0]);
+}
+
+char	*ft_toupper(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] -= 32;
+		i++;
+	}
+	return (str);
+}
+
+char	*ft_strlowcase(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 65 && str[i] <= 90)
+			str[i] += 32;
+		i++;
+	}
+	return (str);
+}
+
+int     ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	unsigned int		i;
+
+	i = 0;
+	while ((s1[i] || s2[i]) && (i < n))
+	{
+		if (s1[i] < s2[i] || s1[i] > s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
+}
+
+char    *ft_strchr(const char *str, int n)
+{
+    size_t      i;
+    unsigned    char    *newStr;
+
+    i = 0;
+    newStr      = (unsigned char *) str;
+
+    while (newStr[i] != '\0')
+    {
+        if (newStr[i] == n)
+            return ((char *) n);
+        i++;
+    }
+    return (0);
+}
+
+char    *ft_strrchr(const char *str, int n)
+{
+    size_t      i;
+    unsigned    char    *newStr;
+
+    newStr      = (unsigned char *) str;
+    i           = ft_strlen(newStr);
+    while (i >= 0)
+    {
+        if (newStr[i] == n)
+            return ((char *) n);
+        i--;
+    }
+    return (0);
+}
+
+void    *ft_memchr(const void *str, int n, size_t n2)
+{
+    size_t      i;
+    unsigned    char    *newStr;
+
+    i = 0;
+    newStr      = (unsigned char *) str;
+    while (newStr[i] != '\0' && i <= n2)
+    {
+        if (newStr[i] == n)
+            return ((char *) n);
+        i++;
+    }
+    return (0);
+}
 
 #endif
