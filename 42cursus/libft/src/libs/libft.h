@@ -117,9 +117,7 @@ int    ft_strlen(char *str)
 
     i = 0;
     while (str[i] && str[i] != '\0')
-    {
-        i++;
-    }
+         i++;
     return (i);
 }
 
