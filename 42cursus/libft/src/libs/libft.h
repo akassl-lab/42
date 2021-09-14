@@ -31,6 +31,9 @@ void    ft_bzero(void *str, size_t n);
 void    *ft_memcpy(void *dest, const void * src, size_t n);
 void    *ft_memmove(void *str1, const void *str2, size_t n);
 
+size_t  ft_strlcpy(char * dest, const char * src, size_t size);
+size_t  ft_strlcat(char * dest, const char *src, size_t size );
+
 
 void    ft_putstr(char *str)
 {
@@ -179,5 +182,51 @@ void    *ft_memmove(void *dest, const void *src, size_t n)
 
     return (newStr);
 }
+
+size_t  ft_strlcpy(char *dest, const char *src, size_t size)
+{
+    size_t    srcLength;
+    unsigned    char    *destStr;
+    unsigned    char    *srcStr;
+
+    destStr = (unsigned char *)  dest;
+    srcStr = (unsigned char *)  src;
+
+    srcLength = ft_strlen(srcStr);
+
+    if (srcLength < size)
+        ft_memcpy(destStr, srcStr, srcLength);
+    return srcLength;
+}
+
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
+{
+	size_t      i;
+	size_t      stringLength[2];
+    unsigned    char    *destStr;
+    unsigned    char    *srcStr;
+
+    destStr = (unsigned char *)  dest;
+    srcStr = (unsigned char *)  src;
+	stringLength[0] = ft_strlen(destStr);
+	stringLength[1] = ft_strlen(srcStr);
+	i = size;
+	while (*destStr)
+	{
+		destStr++;
+		if (i > 0)
+			i--;
+	}
+	while (*srcStr && i > 1)
+	{
+		*destStr++ = *srcStr++;
+		i--;
+	}
+	*destStr = '\0';
+	if (size > stringLength[0])
+		return (stringLength[0] + stringLength[1]);
+	return (size + stringLength[1]);
+}
+
 
 #endif
