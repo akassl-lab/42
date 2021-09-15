@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 20:13:10 by nmallett          #+#    #+#             */
-/*   Updated: 2021/09/15 13:48:56 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/09/15 15:44:15 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -518,19 +518,22 @@ char    *ft_strtrim(char const *s1, char const *set)
 
     while (ptr2[i[0]] != '\0')
     {
-        while (ptr3[1] != '\0')
+        while (ptr3[i[1]] != '\0')
         {
-            // Segmentation Fault in this condition
-            // TODO: To check
-            if (ptr2[i[0]] == ptr3[i[1]])
+            if (ptr3[i[1]] == ptr2[i[0]])
             {
-                ptr1[i[2]] = ptr2[i[1]];
+                i[1] = 0;
+                break;
             }
-            i[1]++;
+            else
+            {
+                ptr1[i[2]] = ptr2[i[0]];
+                i[1] = 0;
+                i[2]++;
+                break;
+            }
         }
         i[0]++;
-        i[1] = 0;
-        i[2]++;
     }
     return (ptr1);
     
