@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 20:13:10 by nmallett          #+#    #+#             */
-/*   Updated: 2021/09/15 13:06:14 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/09/15 13:33:06 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	*ft_calloc(size_t count, size_t size);
 
 char    *ft_strdup(char *s);
 char    *ft_substr(char *s, size_t pos1, size_t pos2);
+char    *ft_strjoin(char const *s1, char const *s2);
 
 
 void    ft_putstr(char *str)
@@ -463,6 +464,37 @@ char    *ft_substr(char *s, size_t pos1, size_t pos2)
         i[0]++;
     }
     return(ptr);
+}
+
+char    *ft_strjoin(char const *s1, char const *s2)
+{
+    int     i[2];
+    char    *ptr1; // return
+    char    *ptr2; // s1
+    char    *ptr3; // s2
+
+    ptr2 = (char *) s1;
+    ptr3 = (char *) s2;
+    ptr1 = (char *) ft_calloc((ft_strlen(ptr2) + ft_strlen(ptr3)), sizeof(char *));
+
+    if(ptr1 == NULL)
+        return(0);
+    i[0] = 0;
+    i[1] = 0;    
+    while (ptr2[i[0]] != '\0')
+    {
+        ptr1[i[1]] = ptr2[i[0]];
+        i[0]++;
+        i[1]++;
+    }
+    i[0] = 0;
+    while (ptr3[i[0]] != '\0')
+    {
+        ptr1[i[1]] = ptr3[i[0]];
+        i[0]++;
+        i[1]++;
+    }
+    return(ptr1);
 }
 
 #endif
