@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 20:13:10 by nmallett          #+#    #+#             */
-/*   Updated: 2021/09/15 13:34:16 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/09/15 13:48:56 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	*ft_calloc(size_t count, size_t size);
 char    *ft_strdup(char *s);
 char    *ft_substr(char *s, size_t pos1, size_t pos2);
 char    *ft_strjoin(char const *s1, char const *s2);
+char    *ft_strtrim(char const *s1, char const *set);
 
 
 void    ft_putstr(char *str)
@@ -499,4 +500,39 @@ char    *ft_strjoin(char const *s1, char const *s2)
     return(ptr1);
 }
 
+char    *ft_strtrim(char const *s1, char const *set)
+{
+    int     i[3];
+    char    *ptr1;
+    char    *ptr2;
+    char    *ptr3;
+
+    ptr2 = (char *) s1;
+    ptr3 = (char *) set;
+    ptr1 = (char *) ft_calloc(ft_strlen(ptr2), sizeof(char *));
+    i[0] = 0; // Loop the original string
+    i[1] = 0; // Loop the characters in the set const var
+    i[2] = 0; // Loop the new string to set the characters in it
+
+    
+
+    while (ptr2[i[0]] != '\0')
+    {
+        while (ptr3[1] != '\0')
+        {
+            // Segmentation Fault in this condition
+            // TODO: To check
+            if (ptr2[i[0]] == ptr3[i[1]])
+            {
+                ptr1[i[2]] = ptr2[i[1]];
+            }
+            i[1]++;
+        }
+        i[0]++;
+        i[1] = 0;
+        i[2]++;
+    }
+    return (ptr1);
+    
+}
 #endif
