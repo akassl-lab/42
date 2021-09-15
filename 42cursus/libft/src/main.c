@@ -6,17 +6,23 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 12:00:37 by nmallett          #+#    #+#             */
-/*   Updated: 2021/09/15 12:18:11 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/09/15 15:43:21 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libs/libft.h"
+#include <string.h>
 
-int main(int argsc, char **argvs)
+int main(void)
 {
-    if (argvs[0] != NULL || argsc != 0)
-    {
-        // Do something
-    }
+    // Leave it void as we are still testing stuff
+
+    char    string1[126] = "abcd";
+    char    removeFromString[50] = "abc";
+    char*   target = ft_strtrim(string1, removeFromString);
+
+    printf("%s\n", target);
+
+    free(target);
     return (0);
 }
