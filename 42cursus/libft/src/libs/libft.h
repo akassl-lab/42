@@ -5,6 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@42quebec.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/14 20:13:10 by nmallett          #+#    #+#             */
+/*   Updated: 2021/09/14 20:13:10 by nmallett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmallett <nmallett@42quebec.com>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 11:42:27 by nmallett          #+#    #+#             */
 /*   Updated: 2021/09/14 11:42:27 by nmallett         ###   ########.fr       */
 /*                                                                            */
@@ -45,6 +57,8 @@ char    *ft_strchr(const char *str, int n);
 char    *ft_strrchr(const char *str, int n);
 
 void    *ft_memchr(const void *str, int n, size_t n2);
+
+int     memcmp(const void *str1, const void *str2, size_t n);
 
 
 void    ft_putstr(char *str)
@@ -351,6 +365,31 @@ void    *ft_memchr(const void *str, int n, size_t n2)
         i++;
     }
     return (0);
+}
+
+int     ft_memcmp(const void *str1, const void *str2, size_t n)
+{
+    size_t              i;
+    int                 string_length[2];
+    unsigned    char    *strOne;
+    unsigned    char    *strTwo;
+
+    i                   = 0;
+    strOne              = (unsigned char *) str1;
+    strTwo              = (unsigned char *) str2;
+    while (strOne[i] != '\0' && i <= n)
+    {
+        if (strOne[i] != strTwo[i])
+            return (0);
+        i++;
+    }
+    while (strTwo[i] != '\0' && i <= n)
+    {
+        if (strTwo[i] != strOne[i])
+            return (0);
+        i++;
+    }
+    return (1);
 }
 
 #endif
