@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 20:13:10 by nmallett          #+#    #+#             */
-/*   Updated: 2021/09/15 12:21:42 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/09/15 13:06:14 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ int     memcmp(const void *str1, const void *str2, size_t n);
 char	*ft_strnstr(char *str, char *to_find, size_t len);
 
 void	*ft_calloc(size_t count, size_t size);
+
+char    *ft_strdup(char *s);
+char    *ft_substr(char *s, size_t pos1, size_t pos2);
 
 
 void    ft_putstr(char *str)
@@ -420,6 +423,46 @@ void	*ft_calloc(size_t count, size_t size)
 		i++;
 	}
 	return ((void *) ptr);
+}
+
+char    *ft_strdup(char *s)
+{
+    int     i;
+    char    *ptr;
+    
+    ptr = (char *) ft_calloc(ft_strlen(s), sizeof(char *));
+
+    i = 0;
+    while (s[i] != '\0')
+    {
+        ptr[i] = s[i];
+        i++;
+    }
+    return(ptr);
+}
+
+char    *ft_substr(char *s, size_t pos1, size_t pos2)
+{
+    size_t    i[2];
+    char      *ptr;
+    
+    ptr = (char *) ft_calloc(ft_strlen(s), sizeof(char *));
+    i[0] = 0; // Initial String Loop
+    i[1] = 0; // The string we need loop
+
+    while (s[i[0]] != '\0')
+    {
+        // Only get the part of the string we are looking for
+        if (i[0] >= pos1 && i[0] <= pos2)
+        {
+            // Once we have found the part of the string that we have found
+            // Store it in the pointer and return it
+            ptr[i[1]] = s[i[0] - 1];
+            i[1]++; 
+        }
+        i[0]++;
+    }
+    return(ptr);
 }
 
 #endif
