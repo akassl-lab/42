@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmallett <nmallett@42quebec.com>           +#+  +:+       +#+        */
+/*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 20:13:10 by nmallett          #+#    #+#             */
-/*   Updated: 2021/09/14 20:13:10 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/09/15 12:21:42 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
 
 
 void    ft_putstr(char *str);
@@ -111,11 +112,11 @@ int    ft_isascii(char *str)
     i = 0;
     while (str[i] && str[i] != '\0')
     {
-        if (str[i] < 0 && str[i] > 127)
-            return (0);
+        if (str[i] >= 0 && str[i] <= 127)
+            return (1);
         i++;
     }
-    return (1);
+    return (0);
 }
 
 int    ft_isprint(char *str)
@@ -125,11 +126,11 @@ int    ft_isprint(char *str)
     i = 0;
     while (str[i] && str[i] != '\0')
     {
-        if (str[i] < 32 && str[i] > 126)
-            return (0);
+        if (str[i] >= 32 && str[i] <= 126)
+            return (1);
         i++;
     }
-    return (1);
+    return (0);
 }
 
 int    ft_strlen(char *str)
@@ -204,11 +205,10 @@ void    *ft_memmove(void *dest, const void *src, size_t n)
 size_t  ft_strlcpy(char *dest, const char *src, size_t size)
 {
     size_t    srcLength;
-    unsigned    char    *destStr;
-    unsigned    char    *srcStr;
-
-    destStr = (unsigned char *)  dest;
-    srcStr = (unsigned char *)  src;
+    char    *destStr;
+    char    *srcStr;
+    destStr = (char *)  dest;
+    srcStr = (char *)  src;
 
     srcLength = ft_strlen(srcStr);
 
@@ -221,11 +221,11 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t      i;
 	size_t      stringLength[2];
-    unsigned    char    *destStr;
-    unsigned    char    *srcStr;
+    char    *destStr;
+    char    *srcStr;
 
-    destStr = (unsigned char *)  dest;
-    srcStr = (unsigned char *)  src;
+    destStr = (char *)  dest;
+    srcStr = (char *)  src;
 	stringLength[0] = ft_strlen(destStr);
 	stringLength[1] = ft_strlen(srcStr);
 	i = size;
@@ -313,15 +313,15 @@ int     ft_strncmp(char *s1, char *s2, unsigned int n)
 char    *ft_strchr(const char *str, int n)
 {
     size_t      i;
-    unsigned    char    *newStr;
+    char    *newStr;
 
     i = 0;
-    newStr      = (unsigned char *) str;
+    newStr      = (char *) str;
 
     while (newStr[i] != '\0')
     {
         if (newStr[i] == n)
-            return ((char *) n);
+            return (&newStr[i]);
         i++;
     }
     return (0);
@@ -330,14 +330,14 @@ char    *ft_strchr(const char *str, int n)
 char    *ft_strrchr(const char *str, int n)
 {
     size_t      i;
-    unsigned    char    *newStr;
+    char    *newStr;
 
-    newStr      = (unsigned char *) str;
+    newStr      = (char *) str;
     i           = ft_strlen(newStr);
     while (i >= 0)
     {
         if (newStr[i] == n)
-            return ((char *) n);
+            return (&newStr[i]);
         i--;
     }
     return (0);
@@ -346,14 +346,14 @@ char    *ft_strrchr(const char *str, int n)
 void    *ft_memchr(const void *str, int n, size_t n2)
 {
     size_t      i;
-    unsigned    char    *newStr;
+    char    *newStr;
 
     i = 0;
-    newStr      = (unsigned char *) str;
+    newStr      = (char *) str;
     while (newStr[i] != '\0' && i <= n2)
     {
         if (newStr[i] == n)
-            return ((char *) n);
+            return (&newStr[i]);
         i++;
     }
     return (0);
@@ -362,7 +362,6 @@ void    *ft_memchr(const void *str, int n, size_t n2)
 int     ft_memcmp(const void *str1, const void *str2, size_t n)
 {
     size_t              i;
-    int                 string_length[2];
     unsigned    char    *strOne;
     unsigned    char    *strTwo;
 
@@ -391,7 +390,7 @@ char	*ft_strnstr(char *str, char *to_find, size_t len)
 
 	i = 0;
 	ito_find = 0;
-	while (str[i] != '\0' && i <= len)
+	while (str[i] != '\0' && i <= (int) len)
 	{
 		ito_find = 0;
 		while (to_find[ito_find] == str[i])
