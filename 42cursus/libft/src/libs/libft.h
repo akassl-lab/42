@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 20:13:10 by nmallett          #+#    #+#             */
-/*   Updated: 2021/09/15 13:33:06 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/09/15 13:34:16 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -450,7 +450,9 @@ char    *ft_substr(char *s, size_t pos1, size_t pos2)
     ptr = (char *) ft_calloc(ft_strlen(s), sizeof(char *));
     i[0] = 0; // Initial String Loop
     i[1] = 0; // The string we need loop
-
+    
+    if(ptr == NULL)
+        return(0);
     while (s[i[0]] != '\0')
     {
         // Only get the part of the string we are looking for
