@@ -50,6 +50,8 @@ int     memcmp(const void *str1, const void *str2, size_t n);
 
 char	*ft_strnstr(char *str, char *to_find, size_t len);
 
+void	*ft_calloc(size_t count, size_t size);
+
 
 void    ft_putstr(char *str)
 {
@@ -400,6 +402,25 @@ char	*ft_strnstr(char *str, char *to_find, size_t len)
 		i++;
 	}	
 	return (0);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+    char        *ptr;
+    int         i;
+    size_t      totalSize;
+
+    totalSize = count * size;
+
+    if(!(ptr = malloc(totalSize)))
+        return (0);
+    i = 0;
+	while (totalSize--)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+	return ((void *) ptr);
 }
 
 #endif
