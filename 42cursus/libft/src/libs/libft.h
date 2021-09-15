@@ -48,6 +48,8 @@ void    *ft_memchr(const void *str, int n, size_t n2);
 
 int     memcmp(const void *str1, const void *str2, size_t n);
 
+char	*ft_strnstr(char *str, char *to_find, size_t len);
+
 
 void    ft_putstr(char *str)
 {
@@ -378,6 +380,26 @@ int     ft_memcmp(const void *str1, const void *str2, size_t n)
         i++;
     }
     return (1);
+}
+
+char	*ft_strnstr(char *str, char *to_find, size_t len)
+{
+	int		i;
+	int		ito_find;
+
+	i = 0;
+	ito_find = 0;
+	while (str[i] != '\0' && i <= len)
+	{
+		ito_find = 0;
+		while (to_find[ito_find] == str[i])
+		{
+			return ((str - (ito_find - i)));
+			ito_find++;
+		}
+		i++;
+	}	
+	return (0);
 }
 
 #endif
