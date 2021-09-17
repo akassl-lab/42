@@ -11,16 +11,13 @@
 /* ************************************************************************** */
 
 #include "libs/libft.h"
-#include <string.h>
+#include <stdio.h>
 
 int main(void)
 {
-    // Leave it void as we are still testing stuff
-
-    char    string1[126] = "abcd";
-    char    removeFromString[50] = "abc";
+    char    string1[126] = "____&* 23 $__ _ _(og gk)__L.S^_$";
+    char    removeFromString[50] = "L_$.^ 2&3*S";
     char*   target = ft_strtrim(string1, removeFromString);
-
     printf("%s\n", target);
 
     free(target);

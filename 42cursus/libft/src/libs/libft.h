@@ -3,6 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+/*   By: nmallett <nmallett@42quebec.com>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/16 16:00:08 by nmallett          #+#    #+#             */
+/*   Updated: 2021/09/16 16:00:08 by nmallett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmallett <nmallett@42quebec.com>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/16 12:27:54 by nmallett          #+#    #+#             */
+/*   Updated: 2021/09/16 12:27:54 by nmallett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 20:13:10 by nmallett          #+#    #+#             */
@@ -54,9 +78,13 @@ char	*ft_strnstr(char *str, char *to_find, size_t len);
 void	*ft_calloc(size_t count, size_t size);
 
 char    *ft_strdup(char *s);
-char    *ft_substr(char *s, size_t pos1, size_t pos2);
+char    *ft_substr(char const* s, unsigned int start, size_t len);
 char    *ft_strjoin(char const *s1, char const *s2);
 char    *ft_strtrim(char const *s1, char const *set);
+char	*ft_strnew(size_t size);
+
+int     ft_akaCheckBeginningStr(char const *s1, char const *set);
+int     ft_akaCheckLastStr(char const *s1, char const *set);
 
 
 void    ft_putstr(char *str)
@@ -443,30 +471,29 @@ char    *ft_strdup(char *s)
     return(ptr);
 }
 
-char    *ft_substr(char *s, size_t pos1, size_t pos2)
+char* ft_substr(char const* s, unsigned int start, size_t len)
 {
-    size_t    i[2];
-    char      *ptr;
-    
-    ptr = (char *) ft_calloc(ft_strlen(s), sizeof(char *));
-    i[0] = 0; // Initial String Loop
-    i[1] = 0; // The string we need loop
-    
-    if(ptr == NULL)
-        return(0);
-    while (s[i[0]] != '\0')
-    {
-        // Only get the part of the string we are looking for
-        if (i[0] >= pos1 && i[0] <= pos2)
-        {
-            // Once we have found the part of the string that we have found
-            // Store it in the pointer and return it
-            ptr[i[1]] = s[i[0] - 1];
-            i[1]++; 
-        }
-        i[0]++;
-    }
-    return(ptr);
+	size_t	i;
+	size_t	j;
+	char* sub;
+
+	i = 0;
+	j = 0;
+	if (!s)
+		return (NULL);
+	if (!(sub = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	while (s[i])
+	{
+		if (i >= start && j < len)
+		{
+			sub[j] = s[i];
+			j++;
+		}
+		i++;
+	}
+	sub[j] = '\0';
+	return (sub);
 }
 
 char    *ft_strjoin(char const *s1, char const *s2)
@@ -500,42 +527,143 @@ char    *ft_strjoin(char const *s1, char const *s2)
     return(ptr1);
 }
 
+char	*ft_strnew(size_t size)
+{
+	char	*ptr;
+
+	if (!(ptr = (char *) malloc(sizeof(char) * size + 1)))
+		return (NULL);
+	ptr[size] = '\0';
+	while (size--)
+		ptr[size] = '\0';
+	return (ptr);
+}
+
+int    ft_akaCheckBeginningStr(char const *s1, char const *set)
+{
+    int     i;
+    int     s;
+    int     result;
+    char    *s1Ex;
+    char    *setEx;
+
+    s1Ex = (char *) s1;
+    setEx = (char *) set;
+    i = 0;
+    s = 0;
+    result = -1;
+
+    while (i < ft_strlen(s1Ex))
+    {
+        while (s < ft_strlen(setEx))
+        {
+            if (s1Ex[i] == setEx[s])
+            {
+                result++;
+                s = 0;
+                break;
+            }
+            s++;
+        }
+        i++;
+    }
+    
+    return (result);
+}
+
+int     ft_akaCheckLastStr(char const *s1, char const *set)
+{
+    int     i;
+    int     s;
+    int     result;
+    char    *s1Ex;
+    char    *setEx;
+
+    s1Ex = (char *) s1;
+    setEx = (char *) set;
+    i = ft_strlen(s1Ex);
+    s = 0;
+    result = -1;
+
+    //printf("Results of the trim for the end of the string\n");
+
+    // Let's start at the end of the string
+    while (i >= 0)
+    {
+        while (s < ft_strlen(setEx))
+        {
+            if (s1Ex[i - 1] == setEx[s])
+            {
+                //printf("found\n");
+                result++;
+                s = 0;
+                break;
+            }
+            s++;
+        }
+        i--;
+    }
+
+    return (result);
+}
+
+
 char    *ft_strtrim(char const *s1, char const *set)
 {
-    int     i[3];
-    char    *ptr1;
-    char    *ptr2;
-    char    *ptr3;
+    int     i;
+    char    *s1Ex;
+    char    *setEx;
+    int     checkResult[2]; // 0 = beginning | 1 = last
+    char    *ptr_result;
 
-    ptr2 = (char *) s1;
-    ptr3 = (char *) set;
-    ptr1 = (char *) ft_calloc(ft_strlen(ptr2), sizeof(char *));
-    i[0] = 0; // Loop the original string
-    i[1] = 0; // Loop the characters in the set const var
-    i[2] = 0; // Loop the new string to set the characters in it
+    // Convert our const to normal chars so we can pass them into functions later on
+    s1Ex = (char *) s1;
+    setEx = (char *) set;
 
-    
+    // Just a safe check to make sure our parameters are not NULL, if so, return null
+    if (s1Ex == NULL || setEx == NULL)
+        return (0);
 
-    while (ptr2[i[0]] != '\0')
+    // Let's allocate just enough addresses to the pointer we are going to return
+    // Make it habit to use your ft_calloc to allocate just enough memory, we dont need 
+    // ...a airbnb of 12 rooms if we are just 2 peoples, right?
+    ptr_result = (char *) ft_calloc(ft_strlen(s1Ex), sizeof(char *));
+    // Let's store the tables that we need to trim from the original string
+    checkResult[0] = ft_akaCheckBeginningStr(s1Ex, setEx);
+    checkResult[1] = ft_akaCheckLastStr(s1Ex, setEx);
+
+    // Let's check if there's anything to even trim?
+    /*
+    if (checkResult[0] == -1 || checkResult[1] == -1)
+        return (ft_strnew(0)); // If the result is -1, just return an empty string in a pointer */
+
+    // Beginning of the string
+    int n = 0;
+    int s = 0;
+    while (n <= ft_strlen(s1Ex))
     {
-        while (ptr3[i[1]] != '\0')
+        if (checkResult[0]+1 < n)
         {
-            if (ptr3[i[1]] == ptr2[i[0]])
-            {
-                i[1] = 0;
-                break;
-            }
-            else
-            {
-                ptr1[i[2]] = ptr2[i[0]];
-                i[1] = 0;
-                i[2]++;
-                break;
-            }
+            ptr_result[s] = s1Ex[n - 1];
+            s++;
         }
-        i[0]++;
+        n++;
     }
-    return (ptr1);
-    
+
+    int fullstringLength = ft_strlen(s1Ex);
+    int wherearewe = 0;
+
+    while (fullstringLength >= wherearewe)
+    {
+        if (checkResult[1]+1 > wherearewe)
+        {
+            ptr_result[fullstringLength - checkResult[0]-2] = '\0';
+        }
+        wherearewe++;
+        fullstringLength--;
+    }
+    return (ptr_result);
+
 }
+
 #endif
