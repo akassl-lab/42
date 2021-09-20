@@ -3,36 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmallett <nmallett@42quebec.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 16:00:08 by nmallett          #+#    #+#             */
-/*   Updated: 2021/09/16 16:00:08 by nmallett         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nmallett <nmallett@42quebec.com>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 12:27:54 by nmallett          #+#    #+#             */
-/*   Updated: 2021/09/16 12:27:54 by nmallett         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 20:13:10 by nmallett          #+#    #+#             */
-/*   Updated: 2021/09/15 15:44:15 by nmallett         ###   ########.fr       */
+/*   Created: 2021/09/16 16:00:08 by nmallett          #+#    #+#             */
+/*   Updated: 2021/09/20 16:18:43 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef LIBFT_H
 # define LIBFT_H "libft.h"
@@ -83,8 +60,11 @@ char    *ft_strjoin(char const *s1, char const *s2);
 char    *ft_strtrim(char const *s1, char const *set);
 char	*ft_strnew(size_t size);
 
-int     ft_akaCheckBeginningStr(char const *s1, char const *set);
-int     ft_akaCheckLastStr(char const *s1, char const *set);
+static int     ft_akaCheckBeginningStr(char const *s1, char const *set);
+static int     ft_akaCheckLastStr(char const *s1, char const *set);
+
+char	**ft_split(char const *s, char c);
+static int	find_char_count(char *s, char c);
 
 
 void    ft_putstr(char *str)
@@ -539,7 +519,7 @@ char	*ft_strnew(size_t size)
 	return (ptr);
 }
 
-int    ft_akaCheckBeginningStr(char const *s1, char const *set)
+static  int    ft_akaCheckBeginningStr(char const *s1, char const *set)
 {
     int     i;
     int     s;
@@ -571,7 +551,7 @@ int    ft_akaCheckBeginningStr(char const *s1, char const *set)
     return (result);
 }
 
-int     ft_akaCheckLastStr(char const *s1, char const *set)
+static  int     ft_akaCheckLastStr(char const *s1, char const *set)
 {
     int     i;
     int     s;
@@ -610,60 +590,165 @@ int     ft_akaCheckLastStr(char const *s1, char const *set)
 
 char    *ft_strtrim(char const *s1, char const *set)
 {
-    int     i;
-    char    *s1Ex;
-    char    *setEx;
-    int     checkResult[2]; // 0 = beginning | 1 = last
-    char    *ptr_result;
+	char	*s1Ex;
+	char	*setEx;
+	int		checkResult[2]; // 0 = beginning | 1 = last
+	char	*ptr_result;
 
-    // Convert our const to normal chars so we can pass them into functions later on
-    s1Ex = (char *) s1;
-    setEx = (char *) set;
+// Convert our const to normal chars so we can pass them into functions later on
+s1Ex = (char *) s1;
+setEx = (char *) set;
 
-    // Just a safe check to make sure our parameters are not NULL, if so, return null
-    if (s1Ex == NULL || setEx == NULL)
-        return (0);
+// Just a safe check to make sure our parameters are not NULL, if so, return null
+if (s1Ex == NULL || setEx == NULL)
+	return (0);
 
-    // Let's allocate just enough addresses to the pointer we are going to return
-    // Make it habit to use your ft_calloc to allocate just enough memory, we dont need 
-    // ...a airbnb of 12 rooms if we are just 2 peoples, right?
-    ptr_result = (char *) ft_calloc(ft_strlen(s1Ex), sizeof(char *));
-    // Let's store the tables that we need to trim from the original string
-    checkResult[0] = ft_akaCheckBeginningStr(s1Ex, setEx);
-    checkResult[1] = ft_akaCheckLastStr(s1Ex, setEx);
+	// Let's allocate just enough addresses to the pointer we are going to return
+	// Make it habit to use your ft_calloc to allocate just enough memory, we dont need 
+	// ...a airbnb of 12 rooms if we are just 2 peoples, right?
+	ptr_result = (char *) ft_calloc(ft_strlen(s1Ex), sizeof(char *));
+	// Let's store the tables that we need to trim from the original string
+	checkResult[0] = ft_akaCheckBeginningStr(s1Ex, setEx);
+	checkResult[1] = ft_akaCheckLastStr(s1Ex, setEx);
 
-    // Let's check if there's anything to even trim?
-    /*
-    if (checkResult[0] == -1 || checkResult[1] == -1)
-        return (ft_strnew(0)); // If the result is -1, just return an empty string in a pointer */
+	// Let's check if there's anything to even trim?
 
-    // Beginning of the string
-    int n = 0;
-    int s = 0;
-    while (n <= ft_strlen(s1Ex))
-    {
-        if (checkResult[0]+1 < n)
-        {
-            ptr_result[s] = s1Ex[n - 1];
-            s++;
-        }
-        n++;
-    }
+	if (checkResult[0] == -1 || checkResult[1] == -1)
+		return (ft_strnew(0)); // If the result is -1, just return an empty string in a pointer 
 
-    int fullstringLength = ft_strlen(s1Ex);
-    int wherearewe = 0;
+	// Beginning of the string
+	int n = 0;
+	int s = 0;
+	while (n <= ft_strlen(s1Ex))
+	{
+		if (checkResult[0]+1 < n)
+		{
+			ptr_result[s] = s1Ex[n - 1];
+			s++;
+		}
+		n++;
+	}
 
-    while (fullstringLength >= wherearewe)
-    {
-        if (checkResult[1]+1 > wherearewe)
-        {
-            ptr_result[fullstringLength - checkResult[0]-2] = '\0';
-        }
-        wherearewe++;
-        fullstringLength--;
-    }
-    return (ptr_result);
+	int fullstringLength = ft_strlen(s1Ex);
+	int wherearewe = 0;
 
+	while (fullstringLength >= wherearewe)
+	{
+		if (checkResult[1]+1 > wherearewe)
+		{
+			ptr_result[fullstringLength - checkResult[0]-2] = '\0';
+		}
+		wherearewe++;
+		fullstringLength--;
+	}
+	return (ptr_result);
+
+}
+
+static int	find_char_count(char *s, char c)
+{
+	int		i[2];
+	
+	i[0] = 0;
+	i[1] = 0;
+	
+	while (s[i[0]] != '\0')
+	{
+		if (s[i[0]] == c)
+			i[1]++;
+		i[0]++;
+	}
+	
+	return i[1];
+}
+
+static	size_t	total_words(char *s, char c);
+static	size_t	total_words(char *s, char c)
+{
+	size_t	i;
+	size_t i2;
+	
+	i = 0;
+	i2 = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+			i2++;
+		i++;
+	}
+	return (i2);
+}
+
+static 	int	count_next_string_length(int start, char *s, char c);
+static 	int	count_next_string_length(int start, char *s, char c)
+{
+	int		i;
+	
+	i = start;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+			return (i);
+		i++;
+	}
+	return (i);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	*sEx;
+	char	**ptr_return;
+	char	*str;
+	int		i;
+	int		i2;
+	int		found;
+	
+	i = 0;
+	i2 = find_char_count(sEx, c);
+	found = 0;
+	sEx = (char *) s;
+	ptr_return = ft_calloc(ft_strlen(sEx), sizeof(char *));
+	//(ptr_return[0]) = malloc(25 * sizeof(char));
+	//(ptr_return[1]) = malloc(25 * sizeof(char));
+	
+	printf("DEBUG: How many times is this character found: %d\n", find_char_count(sEx, c));
+	printf("DEBUG: How many strings is there: %d\n", (int) total_words(sEx, c)+1);
+	
+	int		a = 0;
+	int		ok = 0;
+	//str = ft_substr(sEx, 0, ft_strchr(sEx, c));
+
+	
+	while (a <= (int)total_words(sEx, c))
+	{
+		ok += count_next_string_length(ok, sEx, c);
+		
+		printf("DEBUG: CURRENT STRING SIZE %d\n", ok);
+		
+		str = ft_substr(sEx, ok, 5);
+		
+		printf("%s\n", str);
+		
+		ptr_return[a] = ft_strdup(str);
+		a++;
+	}
+	
+	//str = ft_substr(sEx, 0, ft_strchr(sEx, c));
+	/*while (sEx[i] != '\0')
+	{
+		if (sEx[i] != c)
+		{
+			ptr_return[found][i] = sEx[i];
+		}
+		else
+			ptr_return[found][i] = 10;
+			//ptr_return[found][i+1] = sEx[i + 1];
+		i++;
+	}*/
+	
+	//ptr_return[0][i+1] = '\0';
+	
+	return ptr_return;
 }
 
 #endif

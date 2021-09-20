@@ -6,20 +6,26 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 12:00:37 by nmallett          #+#    #+#             */
-/*   Updated: 2021/09/15 15:43:21 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/09/20 15:18:47 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libs/libft.h"
-#include <stdio.h>
 
 int main(void)
 {
-    char    string1[126] = "____&* 23 $__ _ _(og gk)__L.S^_$";
-    char    removeFromString[50] = "L_$.^ 2&3*S";
-    char*   target = ft_strtrim(string1, removeFromString);
-    printf("%s\n", target);
+    char    string1[250] = "Some_test_we_are_doing";
+    char   	**target = ft_split(string1, '_');
+	int	i = 0;
+	int	i2 = 0; // Keep this to zero for now
+	
+	while (target[i])
+		printf("%s", target[i++]);
 
-    free(target);
+	// Free the addresses we allocated for the double ptr
+	i = 0;
+	while (target[i])
+		free(target[i++]);
+	free(target);
     return (0);
 }
