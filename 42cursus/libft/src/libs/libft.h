@@ -64,7 +64,7 @@ static int     ft_akaCheckBeginningStr(char const *s1, char const *set);
 static int     ft_akaCheckLastStr(char const *s1, char const *set);
 
 char	**ft_split(char const *s, char c);
-static int	find_char_count(char *s, char c);
+static	int	ft_strchr_extended(int start, char *s, char c);
 
 
 void    ft_putstr(char *str)
@@ -645,109 +645,48 @@ if (s1Ex == NULL || setEx == NULL)
 
 }
 
-static int	find_char_count(char *s, char c)
+static	int	ft_strchr_extended(int start, char *s, char c)
 {
 	int		i[2];
 	
-	i[0] = 0;
+	i[0] = start;
 	i[1] = 0;
-	
 	while (s[i[0]] != '\0')
 	{
 		if (s[i[0]] == c)
-			i[1]++;
+			return (i[0]);
 		i[0]++;
 	}
-	
-	return i[1];
-}
-
-static	size_t	total_words(char *s, char c);
-static	size_t	total_words(char *s, char c)
-{
-	size_t	i;
-	size_t i2;
-	
-	i = 0;
-	i2 = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			i2++;
-		i++;
-	}
-	return (i2);
-}
-
-static 	int	count_next_string_length(int start, char *s, char c);
-static 	int	count_next_string_length(int start, char *s, char c)
-{
-	int		i;
-	
-	i = start;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			return (i);
-		i++;
-	}
-	return (i);
+	return (i[0]);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	*sEx;
 	char	**ptr_return;
-	char	*str;
-	int		i;
-	int		i2;
-	int		found;
+	int		i[3];
+	int		storeWorkData[2];
 	
-	i = 0;
-	i2 = find_char_count(sEx, c);
-	found = 0;
-	sEx = (char *) s;
-	ptr_return = ft_calloc(ft_strlen(sEx), sizeof(char *));
-	//(ptr_return[0]) = malloc(25 * sizeof(char));
-	//(ptr_return[1]) = malloc(25 * sizeof(char));
+	i[0] = 0;
+	i[1] = 0;
+	i[2] = ft_strlen((char *)s);
+	storeWorkData[0] = 0;
+	storeWorkData[1] = 0;
+	ptr_return = ft_calloc(i[2], sizeof(char *));
 	
-	printf("DEBUG: How many times is this character found: %d\n", find_char_count(sEx, c));
-	printf("DEBUG: How many strings is there: %d\n", (int) total_words(sEx, c)+1);
-	
-	int		a = 0;
-	int		ok = 0;
-	//str = ft_substr(sEx, 0, ft_strchr(sEx, c));
+	if (ptr_return == NULL)
+		return (NULL);
 
-	
-	while (a <= (int)total_words(sEx, c))
+	while (s[i[0]] != '\0')
 	{
-		ok += count_next_string_length(ok, sEx, c);
-		
-		printf("DEBUG: CURRENT STRING SIZE %d\n", ok);
-		
-		str = ft_substr(sEx, ok, 5);
-		
-		printf("%s\n", str);
-		
-		ptr_return[a] = ft_strdup(str);
-		a++;
-	}
-	
-	//str = ft_substr(sEx, 0, ft_strchr(sEx, c));
-	/*while (sEx[i] != '\0')
-	{
-		if (sEx[i] != c)
+		if (s[i[0]] == c || i[0] == i[2]-1)
 		{
-			ptr_return[found][i] = sEx[i];
+			storeWorkData[1] = ft_strchr_extended(storeWorkData[0], (char *)s, c);
+			ptr_return[i[1]] = ft_substr((char *)s, storeWorkData[0], storeWorkData[1] - storeWorkData[0]);
+			storeWorkData[0] = storeWorkData[1] + 1;
+			i[1]++;
 		}
-		else
-			ptr_return[found][i] = 10;
-			//ptr_return[found][i+1] = sEx[i + 1];
-		i++;
-	}*/
-	
-	//ptr_return[0][i+1] = '\0';
-	
+		i[0]++;
+	}
 	return ptr_return;
 }
 

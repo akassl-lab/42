@@ -14,13 +14,13 @@
 
 int main(void)
 {
-    char    string1[250] = "Some_test_we_are_doing";
+    char    string1[250] = "Some_tttest_tesgg_fdgdf.fgdgdf";
     char   	**target = ft_split(string1, '_');
-	int	i = 0;
-	int	i2 = 0; // Keep this to zero for now
+	int		i = 0;
 	
 	while (target[i])
-		printf("%s", target[i++]);
+		printf("%s\n", target[i++]);
+		//i++;
 
 	// Free the addresses we allocated for the double ptr
 	i = 0;
