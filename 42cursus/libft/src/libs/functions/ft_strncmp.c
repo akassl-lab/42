@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 12:00:37 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:59:06 by nmallett         ###   ########.fr       */
+/*   Created: 2021/10/05 16:53:20 by nmallett          #+#    #+#             */
+/*   Updated: 2021/10/05 16:55:46 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs/libft.h"
+#include "../libft.h"
 
-int main()
+int     ft_strncmp(char *s1, char *s2, unsigned int n)
 {
- 	ft_putendl_fd("test", 0);
-	ft_putendl_fd("test", 0);
- 	return 0;
+	unsigned int		i;
+
+	i = 0;
+	while ((s1[i] || s2[i]) && (i < n))
+	{
+		if (s1[i] < s2[i] || s1[i] > s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
 }

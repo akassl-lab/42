@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 12:00:37 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:59:06 by nmallett         ###   ########.fr       */
+/*   Created: 2021/10/05 16:52:43 by nmallett          #+#    #+#             */
+/*   Updated: 2021/10/05 16:55:02 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs/libft.h"
+#include "../libft.h"
 
-int main()
+void	ft_putchar_fd(char c, int fd)
 {
- 	ft_putendl_fd("test", 0);
-	ft_putendl_fd("test", 0);
- 	return 0;
+	write(fd, &c, 1);
 }

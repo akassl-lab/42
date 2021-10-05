@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 12:00:37 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:59:06 by nmallett         ###   ########.fr       */
+/*   Created: 2021/10/05 16:53:18 by nmallett          #+#    #+#             */
+/*   Updated: 2021/10/05 16:55:43 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs/libft.h"
+#include "../libft.h"
 
-int main()
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
- 	ft_putendl_fd("test", 0);
-	ft_putendl_fd("test", 0);
- 	return 0;
+	int		i;
+	char	*s2;
+	char	*ptr;
+
+	i = 0;
+	s2 = (char *) s;
+	if (s2 == NULL || f == NULL)
+		return (NULL);
+	ptr = ft_calloc(ft_strlen(s2), sizeof(char *));
+	ft_strcpy(ptr, s2);
+	while (ptr[i] != '\0')
+	{
+		ptr[i] = (*f)(i, ptr[i]);
+		i++;
+	}
+	return (ptr);
 }

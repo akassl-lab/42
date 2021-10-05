@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 12:00:37 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:59:06 by nmallett         ###   ########.fr       */
+/*   Created: 2021/10/05 16:53:26 by nmallett          #+#    #+#             */
+/*   Updated: 2021/10/05 16:55:51 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs/libft.h"
+#include "../libft.h"
 
-int main()
+char	*ft_strnstr(char *str, char *to_find, size_t len)
 {
- 	ft_putendl_fd("test", 0);
-	ft_putendl_fd("test", 0);
- 	return 0;
+	int		i;
+	int		ito_find;
+
+	i = 0;
+	ito_find = 0;
+	while (str[i] != '\0' && i <= (int) len)
+	{
+		ito_find = 0;
+		while (to_find[ito_find] == str[i])
+		{
+			return ((str - (ito_find - i)));
+			ito_find++;
+		}
+		i++;
+	}	
+	return (0);
 }

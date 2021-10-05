@@ -1,20 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 12:00:37 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:59:06 by nmallett         ###   ########.fr       */
+/*   Created: 2021/10/05 16:53:36 by nmallett          #+#    #+#             */
+/*   Updated: 2021/10/05 16:56:03 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs/libft.h"
+#include "../libft.h"
 
-int main()
+char	*ft_substr(char const* s, unsigned int start, size_t len)
 {
- 	ft_putendl_fd("test", 0);
-	ft_putendl_fd("test", 0);
- 	return 0;
+	size_t	i;
+	size_t	j;
+	char* sub;
+
+	i = 0;
+	j = 0;
+	if (!s)
+		return (NULL);
+	if (!(sub = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	while (s[i])
+	{
+		if (i >= start && j < len)
+		{
+			sub[j] = s[i];
+			j++;
+		}
+		i++;
+	}
+	sub[j] = '\0';
+	return (sub);
 }

@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 12:00:37 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:59:06 by nmallett         ###   ########.fr       */
+/*   Created: 2021/10/05 16:53:11 by nmallett          #+#    #+#             */
+/*   Updated: 2021/10/05 16:55:35 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs/libft.h"
+#include "../libft.h"
 
-int main()
+size_t  ft_strlcpy(char *dest, const char *src, size_t size)
 {
- 	ft_putendl_fd("test", 0);
-	ft_putendl_fd("test", 0);
- 	return 0;
+    size_t    srcLength;
+    char    *destStr;
+    char    *srcStr;
+    destStr = (char *)  dest;
+    srcStr = (char *)  src;
+
+    srcLength = ft_strlen(srcStr);
+
+    if (srcLength < size)
+        ft_memcpy(destStr, srcStr, srcLength);
+    return srcLength;
 }

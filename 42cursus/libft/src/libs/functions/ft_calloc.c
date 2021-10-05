@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 12:00:37 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:59:06 by nmallett         ###   ########.fr       */
+/*   Created: 2021/10/05 16:52:15 by nmallett          #+#    #+#             */
+/*   Updated: 2021/10/05 16:54:30 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs/libft.h"
+#include "../libft.h"
 
-int main()
+void	*ft_calloc(size_t count, size_t size)
 {
- 	ft_putendl_fd("test", 0);
-	ft_putendl_fd("test", 0);
- 	return 0;
+    char        *ptr;
+    int         i;
+    size_t      totalSize;
+
+    totalSize = count * size;
+
+    if(!(ptr = malloc(totalSize)))
+        return (0);
+    i = 0;
+	while (totalSize--)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+	return ((void *) ptr);
 }

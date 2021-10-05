@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 12:00:37 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:59:06 by nmallett         ###   ########.fr       */
+/*   Created: 2021/10/05 16:52:35 by nmallett          #+#    #+#             */
+/*   Updated: 2021/10/05 16:54:55 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs/libft.h"
+#include "../libft.h"
 
-int main()
+void    *ft_memcpy(void *dest, const void * src, size_t n)
 {
- 	ft_putendl_fd("test", 0);
-	ft_putendl_fd("test", 0);
- 	return 0;
+    size_t              i;
+    unsigned    char    *oldStr;
+    unsigned    char    *newStr;
+
+    i = 0;
+    oldStr = (unsigned char *) dest;
+    newStr = (unsigned char *) src;
+
+    while (i < n)
+    {
+        oldStr[i] = newStr[i];
+        i++;
+    }
+    return (oldStr);
 }

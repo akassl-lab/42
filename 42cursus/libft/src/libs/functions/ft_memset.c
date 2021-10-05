@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 12:00:37 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:59:06 by nmallett         ###   ########.fr       */
+/*   Created: 2021/10/05 16:52:40 by nmallett          #+#    #+#             */
+/*   Updated: 2021/10/05 16:54:59 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs/libft.h"
+#include "../libft.h"
 
-int main()
+void   *ft_memset(void *str, int c, size_t n)
 {
- 	ft_putendl_fd("test", 0);
-	ft_putendl_fd("test", 0);
- 	return 0;
+    size_t          i;
+    unsigned char   *newStr;
+
+    i = 0;
+    newStr = (unsigned char *) str;
+
+    if (n <= 0)
+        return ("Invalid Size Length");
+    
+    while (i < n)
+        newStr[i++] = (unsigned char) c;
+
+    return (newStr);
 }
