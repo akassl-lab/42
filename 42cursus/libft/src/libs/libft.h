@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 16:00:08 by nmallett          #+#    #+#             */
-/*   Updated: 2021/09/20 16:18:43 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/05 16:04:02 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 
 
+char	*ft_strrev(char *str);
+char	*ft_strcpy(char *dest, char *src);
 void    ft_putstr(char *str);
 
 int     ft_isalpha(char *str);
@@ -66,6 +68,51 @@ static int     ft_akaCheckLastStr(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 static	int	ft_strchr_extended(int start, char *s, char c);
 
+int		ft_intlength(int n);
+int 	int_to_ascii(int n);
+char	*ft_itoa(int n);
+
+char 	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+
+static 	void	ft_putchar_fd(char c, int fd);
+static	void    ft_putstr_fd(char *str, int fd);
+static	void    ft_putendl_fd(char *str, int fd);
+
+char	*ft_strrev(char *str)
+{
+	int	len;
+	int	i;
+	char	tmp;
+
+	len = 0;
+	i = 0;
+	while (str[len])
+		len++;
+	len -= 1;
+	while (i < len)
+	{
+		tmp = str[i];
+		str[i] = str[len];
+		str[len] = tmp;
+		i++;
+		len--;
+	}
+	return (str);
+}
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = src[i];
+	return (src);
+}
 
 void    ft_putstr(char *str)
 {
@@ -689,5 +736,158 @@ char	**ft_split(char const *s, char c)
 	}
 	return ptr_return;
 }
+
+int		ft_intlength(int n)
+{
+	if(!n) return (1);
+	int i;
+	
+	i = 0;
+	while (n != 0)
+	{
+		n /= 10;
+		i++;
+	}
+  	return i;
+}
+
+int 	int_to_ascii(int n)
+{	
+	int		i;
+	
+	i = 0;
+	if (n < 0) 
+		return (45);
+	while (i < 10)
+	{
+		if (i == n)
+			return (n + 48);
+		i++;
+	}
+	return (0);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*ptr;
+	int		storeData[2];
+	int		length[2];
+	
+	length[0] = ft_intlength(n);
+	length[1] = 0;
+	storeData[0] = n;
+	storeData[1] = 0;
+	
+	ptr = ft_calloc(length[0]+1, sizeof(char *));
+	
+	if (ptr == NULL)
+		return(NULL);
+	while (length[0] > 0)
+	{
+		if (length[0] == ft_intlength(n))
+			storeData[1] = storeData[0] % 10;
+		else
+		{
+			storeData[1] = storeData[0] /= 10;
+			storeData[1] = storeData[1] % 10;
+		}
+		if (storeData[1] < 0 && length[0] != 1) 
+			storeData[1] -= (storeData[1] + storeData[1]);
+			
+		if(int_to_ascii(storeData[1]) == 45)
+		{
+			ptr[length[1]++] = int_to_ascii(storeData[1] -= (storeData[1] + storeData[1]));
+			ptr[length[1]] = 45;
+		}
+		else
+			ptr[length[1]] = int_to_ascii(storeData[1]);
+		length[0]--;
+		length[1]++;
+	}
+	
+	ptr[length[1]] = '\0';
+	return (ft_strrev(ptr));
+}
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	int		i;
+	char	*s2;
+	char	*ptr;
+
+	i = 0;
+	s2 = (char *) s;
+	if (s2 == NULL || f == NULL)
+		return (NULL);
+	ptr = ft_calloc(ft_strlen(s2), sizeof(char *));
+	ft_strcpy(ptr, s2);
+	while (ptr[i] != '\0')
+	{
+		ptr[i] = (*f)(i, ptr[i]);
+		i++;
+	}
+	return (ptr);
+}
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	int		i;
+	char	*s2;
+	
+	i = 0;
+	s2 = (char *) s;	
+	
+	if (s2 == NULL || f == NULL)
+		return;
+	while (s2[i])
+	{
+		f(i, &s2[i]);
+		i++;
+	}
+}
+
+static 	void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+
+static	void    ft_putstr_fd(char *str, int fd)
+{
+    int     i;
+
+    i = 0;
+    while (str[i] && str[i] != '\0')
+        write(fd, &str[i++], 1);
+}
+
+static	void    ft_putendl_fd(char *str, int fd)
+{
+    int     i;
+
+    i = 0;
+    while (str[i] && str[i] != '\0')
+        write(fd, &str[i++], 1);
+	ft_putchar_fd('\n', fd);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	else if (n <= 9)
+		ft_putchar_fd(n + '0', fd);
+	else
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	return;
+}
+
 
 #endif
