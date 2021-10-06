@@ -1,5 +1,4 @@
 .DS_Store
-a.out
-main.o
-bsq
+*.out
+*.o
 *.exe
