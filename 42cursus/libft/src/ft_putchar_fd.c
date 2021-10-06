@@ -6,11 +6,11 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:52:43 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:55:02 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:02:59 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

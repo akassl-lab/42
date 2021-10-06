@@ -6,11 +6,11 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:52:33 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:54:48 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:03:11 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 int     ft_memcmp(const void *str1, const void *str2, size_t n)
 {

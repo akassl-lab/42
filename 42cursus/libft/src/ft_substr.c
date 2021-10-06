@@ -6,11 +6,11 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:53:36 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:56:03 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:01:02 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 char	*ft_substr(char const* s, unsigned int start, size_t len)
 {

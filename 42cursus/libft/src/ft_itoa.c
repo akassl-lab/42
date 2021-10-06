@@ -6,11 +6,11 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:52:29 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:54:44 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:03:16 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 static int		ft_intlength(int n)
 {

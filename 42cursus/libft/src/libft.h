@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 16:00:08 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 17:00:22 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:03:54 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #ifndef LIBFT_H
 # define LIBFT_H "libft.h"
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 

@@ -6,11 +6,11 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:53:33 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:56:00 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:01:05 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 static  int    ft_akaCheckBeginningStr(char const *s1, char const *set)
 {

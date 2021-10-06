@@ -6,11 +6,11 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 12:00:37 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:59:06 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:03:45 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs/libft.h"
+#include "libft.h"
 
 int main()
 {

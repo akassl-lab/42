@@ -3,17 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nmallett <nmallett@42quebec.com>           +#+  +:+       +#+         #
+#    By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/14 11:29:48 by nmallett          #+#    #+#              #
-#    Updated: 2021/09/14 11:29:48 by nmallett         ###   ########.fr        #
+#    Updated: 2021/10/06 13:59:19 by nmallett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAIN_FILE=debug_main
 NAME=libft.a
-SRCS=$(MAIN_FILE).c
-OBJECTS=$(MAIN_FILE).o
+SRCS=files.c
+OBJECTS=files.o
 
 all: $(NAME)
 

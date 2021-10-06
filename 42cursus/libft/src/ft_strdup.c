@@ -6,11 +6,11 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:53:02 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:55:26 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:02:35 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 char    *ft_strdup(char *s)
 {

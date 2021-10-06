@@ -6,11 +6,11 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:53:38 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:56:05 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:00:59 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 char	*ft_toupper(char *str)
 {

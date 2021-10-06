@@ -6,11 +6,11 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:52:24 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:54:39 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:03:21 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 int    ft_isdigit(char *str)
 {

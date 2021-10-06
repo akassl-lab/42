@@ -6,11 +6,11 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:52:55 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/05 16:55:17 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:02:43 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 static	int	ft_strchr_extended(int start, char *s, char c)
 {
