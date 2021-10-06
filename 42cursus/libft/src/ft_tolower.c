@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:53:16 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/06 14:02:15 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 16:31:08 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strlowcase(char *str)
+int		ft_tolower(int c)
 {
-	int		i;
+	unsigned int	i;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] >= 65 && str[i] <= 90)
-			str[i] += 32;
-		i++;
-	}
-	return (str);
+	i = c;
+	if ((i >= 65 && i <= 90))
+		return (i - 32);
+	else
+		return (i);
 }
