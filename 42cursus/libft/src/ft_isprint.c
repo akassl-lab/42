@@ -6,22 +6,18 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:52:26 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/06 14:03:19 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 16:14:03 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int    ft_isprint(char *str)
+int    ft_isprint(int c)
 {
-    int     i;
+    unsigned int i;
 
-    i = 0;
-    while (str[i] && str[i] != '\0')
-    {
-        if (str[i] >= 32 && str[i] <= 126)
-            return (1);
-        i++;
-    }
+    i = c;
+    if (i >= 32 && i <= 126)
+        return (1);
     return (0);
 }
