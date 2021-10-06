@@ -6,22 +6,18 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:52:17 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/06 14:03:27 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 16:26:12 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int    ft_isalnum(char *str)
+int    ft_isalnum(int c)
 {
-    int     i;
+    unsigned int i;
 
-    i = 0;
-    while (str[i] && str[i] != '\0')
-    {
-        if ((str[i] < 48 || str[i] > 57) && (str[i] < 65 || str[i] > 122))
-            return (0);
-        i++;
-    }
+    i = c;
+    if ((i < 65 || i > 90) && (i < 97 || i > 122) && (i < 48 || i > 57))
+		return (0);
     return (1);
 }
