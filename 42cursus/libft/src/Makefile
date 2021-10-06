@@ -6,7 +6,7 @@
 #    By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/14 11:29:48 by nmallett          #+#    #+#              #
-#    Updated: 2021/10/06 15:02:21 by nmallett         ###   ########.fr        #
+#    Updated: 2021/10/06 16:31:59 by nmallett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,12 +46,12 @@ FILES 				= ft_atoi \
 						ft_strlcat \
 						ft_strlcpy \
 						ft_strlen \
-						ft_strlowcase \
+						ft_tolower \
 						ft_strmapi \
 						ft_strncmp \
 						ft_strnew \
 						ft_strnstr \
-						ft_strchr \
+						ft_strrchr \
 						ft_strrev \
 						ft_strtrim \
 						ft_substr \
