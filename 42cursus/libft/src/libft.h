@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 16:00:08 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/06 14:03:54 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:40:38 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,6 @@ char    *ft_strjoin(char const *s1, char const *s2);
 char    *ft_strtrim(char const *s1, char const *set);
 char	*ft_strnew(size_t size);
 char	**ft_split(char const *s, char c);
-
-int		ft_intlength(int n);
-int 	int_to_ascii(int n);
 
 char	*ft_itoa(int n);
 char 	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
