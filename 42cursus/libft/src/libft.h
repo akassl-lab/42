@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 16:00:08 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/06 14:40:38 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/06 16:33:08 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ char	*ft_strcpy(char *dest, char *src);
 
 void    ft_putstr(char *str);
 
-int     ft_isalpha(char *str);
-int     ft_isdigit(char *str);
-int     ft_isalnum(char *str);
-int     ft_isascii(char *str);
-int     ft_isprint(char *str);
-int     ft_strlen(char *str);
+int    	ft_isalpha(int c);
+int     ft_isdigit(int c);
+int     ft_isalnum(int c);
+int     ft_isascii(int c);
+int     ft_isprint(int c);
+int     ft_strlen(const char *str);
 
 void    *ft_memset(void *str, int c, size_t n);
 void    ft_bzero(void *str, size_t n);
@@ -40,8 +40,8 @@ size_t  ft_strlcat(char * dest, const char *src, size_t size );
 
 int     ft_atoi(char *str);
 
-char	*ft_toupper(char *str);
-char	*ft_strlowcase(char *str);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
 
 int	    ft_strncmp(char *s1, char *s2, unsigned int n);
 
@@ -50,7 +50,7 @@ char    *ft_strrchr(const char *str, int n);
 
 void    *ft_memchr(const void *str, int n, size_t n2);
 
-int     memcmp(const void *str1, const void *str2, size_t n);
+int     ft_memcmp(const void *str1, const void *str2, size_t n);
 
 char	*ft_strnstr(char *str, char *to_find, size_t len);
 
