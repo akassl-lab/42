@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:53:07 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/06 14:02:29 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/08 16:28:37 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ char    *ft_strjoin(char const *s1, char const *s2)
 
     ptr2 = (char *) s1;
     ptr3 = (char *) s2;
-    ptr1 = (char *) ft_calloc((ft_strlen(ptr2) + ft_strlen(ptr3)), sizeof(char *));
 
-    if(ptr1 == NULL)
-        return(0);
-    i[0] = 0;
+	if (!(ptr1 = ft_strnew(ft_strlen(ptr2) + ft_strlen(ptr3))))
+		return (NULL);
+	i[0] = 0;
     i[1] = 0;    
     while (ptr2[i[0]] != '\0')
     {
