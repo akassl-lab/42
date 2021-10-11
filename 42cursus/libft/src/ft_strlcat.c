@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:53:09 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/08 15:31:56 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/11 12:08:19 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,21 @@
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	size_t      i;
-	size_t      stringLength[2];
-    char    *destStr;
-    char    *srcStr;
+	size_t	i[3];
 
-    destStr = (char *)  dest;
-    srcStr = (char *)  src;
-	stringLength[0] = ft_strlen(destStr);
-	stringLength[1] = ft_strlen(srcStr);
-	i = size;
-	while (*destStr)
+	i[1] = ft_strlen(dest);
+	i[2] = ft_strlen(src);
+	i[0] = size;
+	if (size < i[1] + 1)
+		return (size + i[2]);
+	while (*dest != '\0')
 	{
-		destStr++;
-		if (i > 0)
-			i--;
+		if (i[0] > 0)
+			i[0]--;
+		dest++;
 	}
-	while (*srcStr && i > 1)
-	{
-		*destStr++ = *srcStr++;
-		i--;
-	}
-	*destStr = '\0';
-	if (size > stringLength[0])
-		return (stringLength[0] + stringLength[1]);
-	return (size + stringLength[1]);
+	while (*src != '\0' && i[0] < i[1] - size - 1 && i[0]-- > 1)
+		*dest++ = *src++;
+	*dest = '\0';
+	return (i[1] + i[2]);
 }

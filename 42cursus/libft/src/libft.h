@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 16:00:08 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/08 18:29:28 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/11 10:25:27 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,11 @@ char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char 	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+
 void	ft_putchar_fd(char c, int fd);
 void    ft_putstr_fd(char *str, int fd);
 void    ft_putendl_fd(char *str, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
 #endif

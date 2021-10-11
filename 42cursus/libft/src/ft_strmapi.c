@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:53:18 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/06 14:01:23 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/11 10:10:19 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	s2 = (char *) s;
 	if (s2 == NULL || f == NULL)
 		return (NULL);
-	ptr = ft_calloc(ft_strlen(s2), sizeof(char *));
+	ptr = malloc(sizeof(char) * (ft_strlen(s2)) + 1);
+	if (!ptr)
+		return (NULL);
 	ft_strcpy(ptr, s2);
 	while (ptr[i] != '\0')
 	{
