@@ -6,19 +6,18 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:52:24 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/06 16:10:26 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/14 15:18:59 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int    ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
-    unsigned int	i;
-	
+	unsigned int	i;
+
 	i = c;
-	
 	if (i < 48 || i > 57)
-        return (0);
-    return (1);
+		return (0);
+	return (1);
 }

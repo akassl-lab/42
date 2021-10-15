@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:53:24 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/06 14:01:18 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/14 15:07:40 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ char	*ft_strnew(size_t size)
 {
 	char	*ptr;
 
-	if (!(ptr = (char *) malloc(sizeof(char) * size + 1)))
+	ptr = (char *) malloc(sizeof(char) * size + 1);
+	if (!ptr)
 		return (NULL);
 	ptr[size] = '\0';
 	while (size--)

@@ -6,13 +6,13 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:53:16 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/08 11:59:45 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/14 15:13:06 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	unsigned int	i;
 
