@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:52:58 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/08 18:17:18 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/14 13:02:14 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ char	*ft_strchr(const char *s, int n)
 {
 	char	*str;
 
-	if (s == NULL)
-		return (NULL);
 	str = (char *)s;
 	while (*str != (char) n)
 	{

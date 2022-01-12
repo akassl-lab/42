@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:53:38 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/06 16:30:07 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/14 15:13:28 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_toupper(int c)
 {
-	unsigned int i;
-	
+	unsigned int	i;
+
 	i = c;
 	if ((i >= 97 && i <= 122))
 		return (i - 32);

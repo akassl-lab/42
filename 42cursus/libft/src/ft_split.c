@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:52:55 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/11 09:50:10 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/14 16:13:18 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static unsigned int	calculate_strings(char const *s, char c)
 			i[1]++;
 			while (s[i[0]] && s[i[0]] == c)
 				i[0]++;
-			continue;
+			continue ;
 		}
 		i[0]++;
 	}
@@ -38,10 +38,10 @@ static unsigned int	calculate_strings(char const *s, char c)
 	return (i[1]);
 }
 
-static void			next_string(char **s, unsigned int *n,
-					char c)
+static void	next_string(char **s, unsigned int *n,
+						char c)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	*s += *n;
 	*n = 0;
@@ -51,31 +51,31 @@ static void			next_string(char **s, unsigned int *n,
 	while ((*s)[i])
 	{
 		if ((*s)[i] == c)
-			return;
+			return ;
 		(*n)++;
 		i++;
 	}
 }
 
-static char			**free_ptr(char **ptr)
+static char	**free_ptr(char **ptr)
 {	
-	while(*ptr)
+	while (*ptr)
 		free(*ptr++);
 	free(ptr);
 	return (NULL);
 }
 
-/* i table (i0 = loop || i1 = total strs|| i2 = str length) || i3 malloc error */
 char	**ft_split(char const *s, char c)
 {
-	char	**return_ptr;
-	char	*next_ptr;
 	unsigned int	i[3];
-	
+	char			**return_ptr;
+	char			*next_ptr;
+
 	if (!s)
 		return (NULL);
 	i[1] = calculate_strings(s, c);
-	if (!(return_ptr = ft_calloc(i[1] + 1, sizeof(char **))))
+	return_ptr = ft_calloc(i[1] + 1, sizeof(char **));
+	if (!return_ptr)
 		return (NULL);
 	i[0] = 0;
 	next_ptr = (char *) s;
@@ -83,7 +83,8 @@ char	**ft_split(char const *s, char c)
 	while (i[0] < i[1])
 	{
 		next_string(&next_ptr, &i[2], c);
-		if (!(return_ptr[i[0]] = ft_calloc(i[2] + 1, sizeof((char) + (unsigned int) i[2]))))
+		return_ptr[i[0]] = ft_calloc(i[2] + 1, sizeof((char) + i[2]));
+		if (!return_ptr[i[0]])
 			return (free_ptr(return_ptr));
 		ft_strlcpy(return_ptr[i[0]], next_ptr, i[2] + 1);
 		i[0]++;

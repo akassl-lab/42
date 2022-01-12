@@ -6,38 +6,36 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:53:07 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/08 16:28:37 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/14 15:18:14 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-    int     i[2];
-    char    *ptr1; // return
-    char    *ptr2; // s1
-    char    *ptr3; // s2
+	int		i[2];
+	char	*ptr1;
 
-    ptr2 = (char *) s1;
-    ptr3 = (char *) s2;
-
-	if (!(ptr1 = ft_strnew(ft_strlen(ptr2) + ft_strlen(ptr3))))
+	if (!s1)
+		return (NULL);
+	ptr1 = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
+	if (!ptr1)
 		return (NULL);
 	i[0] = 0;
-    i[1] = 0;    
-    while (ptr2[i[0]] != '\0')
-    {
-        ptr1[i[1]] = ptr2[i[0]];
-        i[0]++;
-        i[1]++;
-    }
-    i[0] = 0;
-    while (ptr3[i[0]] != '\0')
-    {
-        ptr1[i[1]] = ptr3[i[0]];
-        i[0]++;
-        i[1]++;
-    }
-    return(ptr1);
+	i[1] = 0;
+	while (s1[i[0]] != '\0')
+	{
+		ptr1[i[1]] = s1[i[0]];
+		i[0]++;
+		i[1]++;
+	}
+	i[0] = 0;
+	while (s2[i[0]] != '\0')
+	{
+		ptr1[i[1]] = s2[i[0]];
+		i[0]++;
+		i[1]++;
+	}
+	return (ptr1);
 }

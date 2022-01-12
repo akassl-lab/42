@@ -6,17 +6,20 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:52:50 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/06 14:02:51 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/14 14:55:47 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putstr_fd(char *str, int fd)
+void	ft_putstr_fd(char *str, int fd)
 {
-    int     i;
+	int	i;
 
-    i = 0;
-    while (str[i] && str[i] != '\0')
-        write(fd, &str[i++], 1);
+	i = 0;
+	if (str && fd)
+	{
+		while (str[i] && str[i] != '\0')
+			write(fd, &str[i++], 1);
+	}
 }

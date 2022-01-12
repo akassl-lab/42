@@ -6,7 +6,7 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:52:48 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/11 10:21:27 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/14 15:24:24 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(n / 10, fd);
 		ft_putnbr_fd(n % 10, fd);
 	}
-	return;
+	return ;
 }

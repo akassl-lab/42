@@ -6,48 +6,75 @@
 /*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:52:29 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/11 13:51:07 by nmallett         ###   ########.fr       */
+/*   Updated: 2021/10/15 14:16:54 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-static int	int_length(int nbr)
+static int	ft_itoa_length(int n)
 {
-	int len;
+	int		i;
 
-	len = 0;
-	len = (nbr <= 0 ? 1 : 0);
-	while (nbr != 0)
+	i = 0;
+	if (n < 0)
+		n = -n;
+	while (n > 0)
 	{
-		nbr = nbr / 10;
-		len++;
+		n = n / 10;
+		i++;
 	}
-	return (len);
+	return (i);
 }
 
-char		*ft_itoa(int n)
+static int	ft_itoa_divide(int n)
 {
-	char			*ptr;
-	unsigned int	nbr;
-	int				i[2];
+	int		i;
 
-	i[0] = (n < 0 ? 1 : 0);
-	ptr = NULL;
-	i[1] = int_length(n);
-	nbr = (n < 0 ? -n : n);
-	ptr = (char *) malloc (sizeof (char) * i[1] + 1);
-	if (!ptr)
-		return (NULL);
-	ptr[i[1]--] = '\0';
-	while (i[1] >= 0)
+	i = 1;
+	while (n > 0)
 	{
-		ptr[i[1]] = nbr % 10 + '0';
-		nbr /= 10;
-		i[1]--;
+		i = i * 10;
+		n--;
 	}
-	if (i[0] == 1)
-		ptr[0] = '-';
+	return (i);
+}
+
+static char	*ft_itoa_calloc(int n)
+{
+	char	*ptr;
+
+	ptr = NULL;
+	if (n <= -2147483648)
+		ptr = ft_calloc(ft_itoa_length(n) + 2, sizeof(char *));
+	else
+		ptr = ft_calloc(ft_itoa_length(n) + 2, sizeof(char));
+	return (ptr);
+}
+
+char	*ft_itoa(int n)
+{
+	int		i[2];
+	char	*ptr;
+
+	ptr = ft_itoa_calloc(n);
+	if (ptr == NULL)
+		return (NULL);
+	i[1] = ft_itoa_divide(ft_itoa_length(n) - 1);
+	i[0] = 0;
+	if (n == -2147483648)
+		return (ft_strcpy(ptr, "-2147483648"));
+	if (n < 0)
+	{
+		ptr[i[0]++] = '-';
+		n = -n;
+	}
+	while (i[1] > 0)
+	{
+		ptr[i[0]] = (n / i[1] % 10 + 48);
+		i[0]++;
+		i[1] = i[1] / 10;
+	}
+	ptr[i[0]] = '\0';
 	return (ptr);
 }
