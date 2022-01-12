@@ -37,15 +37,15 @@ tcp=$(cat /proc/net/sockstat{,6} | awk '$1 == "TCP:" {print $3}')
 mac=$(ip link show | awk '$1 == "link/ether" {print $2}')
 
 # Output information
-echo "#Architecture: $(uname -a)"
-echo "#Physical CPU: $(grep 'physical id' /proc/cpuinfo | sort | uniq | wc -l)"
-echo "#Virtual CPU: $(grep '^processor' /proc/cpuinfo | wc -l)"
-echo "#Memory Usage: $usedram / ${freeram}MB ($percentageram%)"
-echo "#Disk Usage: $useddisk / ${freedisk}Gb ($percdisk%)"
-echo "#CPU Load: $cpuload"
-echo "#Last Boot: $lastboot"
-echo "#LVM Usage: $lvmanswer"
-echo "#TCP Connections $tcp ESTABLISHED"
-echo "#User Log: $(users | wc -w)"
-echo "#Network: IP $(hostname -I) ($mac)"
-echo "#Sudo: $(journalctl _COMM=sudo | grep COMMAND | wc -l)"
+wall "	#Architecture: $(uname -a)
+		#Physical CPU: $(grep 'physical id' /proc/cpuinfo | sort | uniq | wc -l)
+		#Virtual CPU: $(grep '^processor' /proc/cpuinfo | wc -l)
+		#Memory Usage: $usedram / ${freeram}MB ($percentageram%)
+		#Disk Usage: $useddisk / ${freedisk}Gb ($percdisk%)
+		#CPU Load: $cpuload
+		#Last Boot: $lastboot
+		#LVM Usage: $lvmanswer
+		#TCP Connections $tcp ESTABLISHED
+		#User Log: $(users | wc -w)
+		#Network: IP $(hostname -I) ($mac)
+		#Sudo: $(journalctl _COMM=sudo | grep COMMAND | wc -l)"
