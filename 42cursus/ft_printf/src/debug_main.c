@@ -12,10 +12,10 @@
 
 # include <stdio.h>
 
-int main(int args, char **argv)
+int	printf(const char *, ...);
+
+int	main(int args, char **argv)
 {
 
 	return (0);
 }
-
-
