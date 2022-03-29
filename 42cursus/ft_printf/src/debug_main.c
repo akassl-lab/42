@@ -14,13 +14,16 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-# define DEBUG_STRING "\nabcd 1234 test: %s | zzzz"
-# define DEBUG_ARGUMENT "gddgdfggsgdsgf"
+# define DEBUG_STRING "\nabcd 1234 test: %p fsdfsdfsd"
+# define DEBUG_ARGUMENT "jgfijjg"
 
-int	ft_printf(const char *str, ...);
-int detect_params(const char *str);
-int is_printf_params(const int ascii);
-void switch_cases(const int ascii, ...);
+int			ft_printf(const char *str, ...);
+int			detect_params(const char *str);
+int			is_printf_params(const int ascii);
+void		switch_cases(const int ascii, ...);
+size_t		str_len(uintptr_t ptr);
+void		ft_putchar(char c);
+void		put_ptr(uintptr_t num);
 
 int	main(int args, char **argv)
 {
@@ -35,6 +38,7 @@ void switch_cases(const int ascii, ...)
 	va_list args;
 	va_start(args, ascii);
 	char	*store_data[2];
+	uintptr_t ptr;
 	int 	i = 0;
 
 	switch(ascii)
@@ -50,6 +54,17 @@ void switch_cases(const int ascii, ...)
 				write(1, &store_data[1][i++], 1);
 			break;
 		case 'p':
+			i = 0;
+			ptr = va_arg(args, uintptr_t);
+			i += write(1, "0x", 2);
+			if (ptr == 0)
+				i += write(1, "0", 1);
+			else
+			{
+				put_ptr(ptr);
+				i += str_len(ptr);
+			}
+			
 			break;
 		case 'd':
 			break;
@@ -119,4 +134,36 @@ int detect_params(const char *str)
 	}
 	flag_check[0] = i;
 	return (flag_check[0]);
+}
+
+size_t	str_len(uintptr_t ptr)
+{
+	size_t length = 0;
+	while (ptr != 0) 
+	{
+		ptr = ptr / 16;
+		length++;
+	}
+	return (length);
+}
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	put_ptr(uintptr_t ptr)
+{
+	if (ptr >= 16)
+	{
+		put_ptr(ptr / 16);
+		put_ptr(ptr % 16);
+	}
+	else
+	{
+		if (ptr <= 9)
+			ft_putchar((ptr + 48));
+		else
+			ft_putchar((ptr - 10 + 97));
+	}
 }
