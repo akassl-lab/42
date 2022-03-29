@@ -14,7 +14,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-# define DEBUG_STRING "\nabcd 1234 test: %i fsdfsdfsd"
+# define DEBUG_STRING "\nabcd 1234 test: %d fsdfsdfsd"
 # define DEBUG_ARGUMENT 12345
 
 int			ft_printf(const char *str, ...);
@@ -27,6 +27,7 @@ void		put_ptr(uintptr_t num);
 int			ft_isdigit(int c);
 void		ft_putstr(char *str);
 void		ft_putnbr(int n);
+void		ft_putnbr_unsigned(unsigned int n);
 
 int	main(int args, char **argv)
 {
@@ -43,6 +44,7 @@ void switch_cases(const int ascii, ...)
 	char	*store_data[2];
 	uintptr_t ptr;
 	int		dec;
+	unsigned int unsigned_int;	
 	size_t 	i = 0;
 
 	switch(ascii)
@@ -79,6 +81,8 @@ void switch_cases(const int ascii, ...)
 			ft_putnbr(dec);
 			break;
 		case 'u':
+			unsigned_int = va_arg(args, unsigned int);
+			ft_putnbr_unsigned(dec);
 			break;
 		case 'x':
 			break;
@@ -214,6 +218,23 @@ void	ft_putnbr(int n)
 	{
 		ft_putnbr(n / 10);
 		ft_putnbr(n % 10);
+	}
+	return ;
+}
+
+void	ft_putnbr_unsigned(unsigned int n)
+{
+	if (n < 0)
+	{
+		ft_putchar('-');
+		ft_putnbr_unsigned(-n);
+	}
+	else if (n <= 9)
+		ft_putchar(n + '0');
+	else
+	{
+		ft_putnbr_unsigned(n / 10);
+		ft_putnbr_unsigned(n % 10);
 	}
 	return ;
 }
