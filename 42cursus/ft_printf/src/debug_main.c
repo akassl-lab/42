@@ -82,7 +82,7 @@ void switch_cases(const int ascii, ...)
 			break;
 		case 'u':
 			unsigned_int = va_arg(args, unsigned int);
-			ft_putnbr_unsigned(dec);
+			ft_putnbr_unsigned(unsigned_int);
 			break;
 		case 'x':
 			break;
