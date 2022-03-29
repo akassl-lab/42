@@ -14,8 +14,8 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-# define DEBUG_STRING "\nabcd 1234 test: %p fsdfsdfsd"
-# define DEBUG_ARGUMENT "jgfijjg"
+# define DEBUG_STRING "\nabcd 1234 test: %i fsdfsdfsd"
+# define DEBUG_ARGUMENT 12345
 
 int			ft_printf(const char *str, ...);
 int			detect_params(const char *str);
@@ -24,6 +24,9 @@ void		switch_cases(const int ascii, ...);
 size_t		str_len(uintptr_t ptr);
 void		ft_putchar(char c);
 void		put_ptr(uintptr_t num);
+int			ft_isdigit(int c);
+void		ft_putstr(char *str);
+void		ft_putnbr(int n);
 
 int	main(int args, char **argv)
 {
@@ -39,7 +42,8 @@ void switch_cases(const int ascii, ...)
 	va_start(args, ascii);
 	char	*store_data[2];
 	uintptr_t ptr;
-	int 	i = 0;
+	int		dec;
+	size_t 	i = 0;
 
 	switch(ascii)
 	{
@@ -67,8 +71,12 @@ void switch_cases(const int ascii, ...)
 			
 			break;
 		case 'd':
+			dec = va_arg(args, int);
+			ft_putnbr(dec);
 			break;
 		case 'i':
+			dec = va_arg(args, int);
+			ft_putnbr(dec);
 			break;
 		case 'u':
 			break;
@@ -76,7 +84,8 @@ void switch_cases(const int ascii, ...)
 			break;
 		case 'X':
 			break;
-		case '%': 
+		case '%':
+			
 			break;
 		default: {
 		}
@@ -166,4 +175,45 @@ void	put_ptr(uintptr_t ptr)
 		else
 			ft_putchar((ptr - 10 + 97));
 	}
+}
+
+int	ft_isdigit(int c)
+{
+	unsigned int	i;
+
+	i = c;
+	if (i < 48 || i > 57)
+		return (0);
+	return (1);
+}
+
+void	ft_putstr(char *str)
+{
+	int		i;
+
+	i = 0;
+	if (str)
+	{
+		while (str[i] && str[i] != '\0')
+			write(1, &str[i++], 1);
+	}
+}
+
+void	ft_putnbr(int n)
+{
+	if (n == -2147483648)
+		ft_putstr("-2147483648");
+	else if (n < 0)
+	{
+		ft_putchar('-');
+		ft_putnbr(-n);
+	}
+	else if (n <= 9)
+		ft_putchar(n + '0');
+	else
+	{
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
+	}
+	return ;
 }
