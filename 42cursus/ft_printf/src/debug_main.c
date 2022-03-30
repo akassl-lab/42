@@ -14,8 +14,8 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-# define DEBUG_STRING "\nabcd 1234 test: %d fsdfsdfsd"
-# define DEBUG_ARGUMENT 12345
+# define DEBUG_STRING "\nabcd 1234 test: %% fsdfsdfsd"
+# define DEBUG_ARGUMENT "sdgdsfds"
 
 int			ft_printf(const char *str, ...);
 int			detect_params(const char *str);
@@ -28,11 +28,12 @@ int			ft_isdigit(int c);
 void		ft_putstr(char *str);
 void		ft_putnbr(int n);
 void		ft_putnbr_unsigned(unsigned int n);
+void		ft_put_hex(unsigned int hex, const int type);
 
 int	main(int args, char **argv)
 {
-	ft_printf(DEBUG_STRING, DEBUG_ARGUMENT);
-	printf(DEBUG_STRING, DEBUG_ARGUMENT);
+	ft_printf(DEBUG_STRING);
+	printf(DEBUG_STRING);
 	return (0);
 }
 
@@ -44,7 +45,8 @@ void switch_cases(const int ascii, ...)
 	char	*store_data[2];
 	uintptr_t ptr;
 	int		dec;
-	unsigned int unsigned_int;	
+	unsigned int unsigned_int;
+	unsigned int unsigned_hex;	
 	size_t 	i = 0;
 
 	switch(ascii)
@@ -85,11 +87,20 @@ void switch_cases(const int ascii, ...)
 			ft_putnbr_unsigned(unsigned_int);
 			break;
 		case 'x':
+			unsigned_hex = va_arg(args, unsigned int);
+			if (unsigned_hex == 0)
+				write(1, "0", 1);
+			else
+				ft_put_hex(unsigned_hex, 1);
 			break;
 		case 'X':
+			unsigned_hex = va_arg(args, unsigned int);
+			if (unsigned_hex == 0)
+				write(1, "0", 1);
+			else
+				ft_put_hex(unsigned_hex, 2);
 			break;
 		case '%':
-			
 			break;
 		default: {
 		}
@@ -237,4 +248,23 @@ void	ft_putnbr_unsigned(unsigned int n)
 		ft_putnbr_unsigned(n % 10);
 	}
 	return ;
+}
+
+void	ft_put_hex(unsigned int hex, const int type)
+{
+	if (hex >= 16)
+	{
+		ft_put_hex(hex / 16, type);
+		ft_put_hex(hex % 16, type);
+	}
+	else
+	{
+		if (hex <= 9)
+			ft_putchar((hex + 48));
+		else
+			if (type == 1)
+				ft_putchar((hex - 10 + 97));
+			else if (type == 2)
+				ft_putchar((hex - 10 + 65));
+	}
 }
