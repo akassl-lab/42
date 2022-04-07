@@ -6,102 +6,95 @@
 /*   By: nathanmallett <nathanmallett@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:14:00 by nathanmalle       #+#    #+#             */
-/*   Updated: 2022/04/07 14:14:01 by nathanmalle      ###   ########.fr       */
+/*   Updated: 2022/04/07 14:43:22 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int is_printf_params(const int ascii);
-
 int	ft_printf(const char *str, ...)
 {
-    t_struct stack;
+	t_struct	stack;
 
-    stack.i = 0;
-    stack.str = 0;
-
+	stack.i = 0;
+	stack.str = 0;
 	va_start(stack.args, (char *)str);
 	while (str[stack.i])
 	{
-        if(is_printf_params(str[stack.i]) == 1)
-        {
-            stack.i++;
-            switch_cases(str, &stack);
-        }
-        else if(is_printf_params(str[stack.i]) == 2)
-            stack.str += ft_putchar(str[stack.i]);
-        else
-            continue;
+		if (is_printf_params(str[stack.i]) == 1)
+		{
+			stack.i++;
+			switch_cases(str, &stack);
+		}
+		else if (is_printf_params(str[stack.i]) == 2)
+			stack.str += ft_putchar(str[stack.i]);
+		else
+			continue ;
 		stack.i++;
 	}
 	va_end(stack.args);
 	return (stack.str);
 }
 
-void switch_cases(const char *str, t_struct *stack)
+void	switch_cases(const char *str, t_struct *stack)
 {
-    char currentChar;
+	char	currentchar;
 
-    currentChar = (char) str[stack->i];
-    if (currentChar == 'c')
-        stack->str += ft_putchar(va_arg(stack->args, int));
-    else if(currentChar == 's')
-        stack->str += ft_putstr(va_arg(stack->args, char *));
-    else if(currentChar == 'd' || currentChar == 'i')
-        stack->str += ft_putnbr(va_arg(stack->args, int));
-    else if(currentChar == 'u')
-        stack->str += ft_putnbr_unsigned(va_arg(stack->args, unsigned int));
-    else if(currentChar == 'p')
-        stack->str += ft_put_addr(va_arg(stack->args, void *));
-    else if(currentChar == 'x')
-        stack->str += ft_put_hex(va_arg(stack->args, unsigned int), 1);
-    else if(currentChar == 'X')
-        stack->str += ft_put_hex(va_arg(stack->args, unsigned int), 2);
-    else if(currentChar == '%')
-        stack->str += write(1, "%", 1);
+	currentchar = (char) str[stack->i];
+	if (currentchar == 'c')
+		stack->str += ft_putchar(va_arg(stack->args, int));
+	else if (currentchar == 's')
+		stack->str += ft_putstr(va_arg(stack->args, char *));
+	else if (currentchar == 'd' || currentChar == 'i')
+		stack->str += ft_putnbr(va_arg(stack->args, int));
+	else if (currentchar == 'u')
+		stack->str += ft_putnbr_unsigned(va_arg(stack->args, unsigned int));
+	else if (currentchar == 'p')
+		stack->str += ft_put_addr(va_arg(stack->args, void *));
+	else if (currentchar == 'x')
+		stack->str += ft_put_hex(va_arg(stack->args, unsigned int), 1);
+	else if (currentchar == 'X')
+		stack->str += ft_put_hex(va_arg(stack->args, unsigned int), 2);
+	else if (currentchar == '%')
+		stack->str += write(1, "%", 1);
 }
 
-int is_printf_params(const int ascii)
+int	is_printf_params(const int ascii)
 {
-    if(!ascii || ascii == -1)
-        return (0);
-    if (ascii == 37)
-        return(1);
-    else if(ascii != 37)
-        return(2);
-    else
-        return(0);
+	if (!ascii || ascii == -1)
+		return (0);
+	if (ascii == 37)
+		return (1);
+	else if (ascii != 37)
+		return (2);
+	else
+		return (0);
 }
 
 int	str_len(int ptr)
-    {
-        size_t length = 0;
-        while (ptr != 0) 
-        {
-            ptr = ptr / 16;
-            length++;
-        }
-        return (length);
-    }
+{
+	size_t	length;
 
-    int		ft_putchar(char c)
-    {
-        return(write(1, &c, 1));
-    }
+	length = 0;
+	while (ptr != 0)
+	{
+		ptr = ptr / 16;
+		length++;
+	}
+	return (length);
+}
 
-    int	ft_putstr(char *str)
-    {
-        int		i;
+int	ft_putstr(char *str)
+{
+	int	i;
 
-        i = 0;
-
-        if (!str)
-            return(ft_putstr("(null)"));
-        if (str)
-        {
-            while (str[i] && str[i] != '\0')
-                write(1, &str[i++], 1);
-        }
-        return(i);
-    }
+	i = 0;
+	if (!str)
+		return (ft_putstr("(null)"));
+	if (str)
+	{
+		while (str[i] && str[i] != '\0')
+			write(1, &str[i++], 1);
+	}
+	return (i);
+}
