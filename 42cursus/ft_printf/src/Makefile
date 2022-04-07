@@ -6,7 +6,7 @@
 #    By: nathanmallett <nathanmallett@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 14:44:54 by nathanmalle       #+#    #+#              #
-#    Updated: 2022/04/07 14:45:04 by nathanmalle      ###   ########.fr        #
+#    Updated: 2022/04/07 16:40:18 by nathanmalle      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,5 @@ $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
 all : $(NAME)
-
-clean :
-	$(MAKE) clean -C ./libft
-	rm -rf $(OBJS)
-
-fclean : clean
-	$(MAKE) fclean -C ./libft
-	rm -rf $(NAME)
 
 re : fclean all
