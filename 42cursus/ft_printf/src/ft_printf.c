@@ -6,7 +6,7 @@
 /*   By: nathanmallett <nathanmallett@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:14:00 by nathanmalle       #+#    #+#             */
-/*   Updated: 2022/04/07 14:43:22 by nmallett         ###   ########.fr       */
+/*   Updated: 2022/04/07 14:46:11 by nathanmalle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	switch_cases(const char *str, t_struct *stack)
 		stack->str += ft_putchar(va_arg(stack->args, int));
 	else if (currentchar == 's')
 		stack->str += ft_putstr(va_arg(stack->args, char *));
-	else if (currentchar == 'd' || currentChar == 'i')
+	else if (currentchar == 'd' || currentchar == 'i')
 		stack->str += ft_putnbr(va_arg(stack->args, int));
 	else if (currentchar == 'u')
 		stack->str += ft_putnbr_unsigned(va_arg(stack->args, unsigned int));
