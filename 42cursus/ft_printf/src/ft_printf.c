@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmallett <nmallett@student.42quebec.com>   +#+  +:+       +#+        */
+/*   By: nathanmallett <nathanmallett@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/27 21:30:32 by nmallett          #+#    #+#             */
-/*   Updated: 2022/03/27 21:30:32 by nmallett         ###   ########.fr       */
+/*   Created: 2022/04/07 14:14:00 by nathanmalle       #+#    #+#             */
+/*   Updated: 2022/04/07 14:14:01 by nathanmalle      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
