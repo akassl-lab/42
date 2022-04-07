@@ -14,7 +14,7 @@ useddisk=$(df -Bm | grep '^/dev/' | grep -v '/boot$' | awk '{ut += $3} END {prin
 percdisk=$(df -Bm | grep '^/dev/' | grep -v '/boot$' | awk '{ut += $3} {ft+= $2} END {printf("%d"), ut/ft*100}')
 
 # CPU Load Usages
-cpuload=$(top -bn1 | grep '^%Cpu' | cut -c 9- | xargs | awk '{printf("%.1f%%"), $1 + $3}')
+cpuload=$(grep 'cpu' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage "%"}')
 
 # Last Boot
 lastboot=$(who -b | awk '$1 == "system" {print $3 " " $4}')# LVM Group Usages from the Encrypted Drives
