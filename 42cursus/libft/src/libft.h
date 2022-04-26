@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmallett <nmallett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmallett <nmallett@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 16:00:08 by nmallett          #+#    #+#             */
-/*   Updated: 2021/10/15 14:49:12 by nmallett         ###   ########.fr       */
+/*   Updated: 2022/04/26 12:17:53 by nmallett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,19 @@
 # define LIBFT_H "libft.h"
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
+# include <fcntl.h>
+
+typedef struct t_struct
+{
+	int		i;
+	int		str;
+	va_list	args;
+}	t_struct;
 
 char	*ft_strrev(char *str);
 char	*ft_strcpy(char *dest, char *src);
-void	ft_putstr(char *str);
+int		ft_putstr(char *str);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
@@ -53,4 +62,19 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *str, int fd);
 void	ft_putendl_fd(char *str, int fd);
 void	ft_putnbr_fd(int n, int fd);
+char	*get_next_line(int fd);
+char	*ft_read_file(int fd, char *buf, char *tmp, char *str);
+char	*ft_start(char *str);
+char	*ft_end(char *str);
+int		ft_nl(char *str);
+int		ft_printf(const char *str, ...);
+void	switch_cases(const char *str, t_struct *stack);
+int		str_len(int ptr);
+int		ft_putchar(char c);
+int		ft_putnbr(int n);
+int		ft_putnbr_unsigned(unsigned int n);
+int		ft_put_hex(unsigned long long hex, const int type);
+int		ft_put_ptr(int ptr);
+int		ft_put_addr(void *ptr);
+int		is_printf_params(const int ascii);
 #endif
