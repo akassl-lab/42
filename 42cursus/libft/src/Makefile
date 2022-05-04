@@ -6,7 +6,7 @@
 #    By: nmallett <nmallett@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/14 11:29:48 by nmallett          #+#    #+#              #
-#    Updated: 2022/04/26 12:23:52 by nmallett         ###   ########.fr        #
+#    Updated: 2022/05/04 14:29:42 by nmallett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ FILES 				= src/ft_atoi \
 						src/ft_put_addr \
 						src/ft_put_hex \
 						src/ft_putchar \
+						src/ft_putnbr \
 						src/ft_putnbr_unsigned \
 						src/get_next_line \
 						src/ft_printf \
